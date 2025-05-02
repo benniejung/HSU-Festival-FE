@@ -4,12 +4,12 @@ import colors from "./colors";
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
-    @font-face {
+    /* @font-face {
         font-family: 'Ownglyph_meetme-Rg';
         src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
-    }
+    } */
         
     :root {
         --vh: 100%;
@@ -20,10 +20,12 @@ ${reset}
         touch-action: manipulation;
         background-size: 100%;
         background-repeat: repeat;
+       
     }
 
     * {
         box-sizing: border-box;
+        font-size: 16px;
     } 
     
     /* 빅테스크탑 */
@@ -68,14 +70,14 @@ ${reset}
     @media screen and (max-width:424px) {
         /* 모바일 */
         html{
-            font-size: 25%;
+            font-size: 50%;
         }
     }
 
     @media screen and (max-width:374px) {
         /* 모바일 */
         html{
-            font-size: 20%;
+            font-size: 50%;
         }
     }
     

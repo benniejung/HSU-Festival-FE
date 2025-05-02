@@ -3,12 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import * as S from "../../styles/bottomnavbar/BottomNavBar.styles";
 
 // images
-import HOME from "../../assets/bottomnavbar/home.png";
-import INFO from "../../assets/bottomnavbar/info.png";
-import COMMUNITY from "../../assets/bottomnavbar/community.png";
-import HOMESELECTED from "../../assets/bottomnavbar/home-selected.png";
-import INFOSELECTED from "../../assets/bottomnavbar/info-selected.png";
-import COMMUNITYSELECTED from "../../assets/bottomnavbar/community-selected.png";
+import HOME from "../../assets/bottomnavbar/home.svg";
+import INFO from "../../assets/bottomnavbar/info.svg";
+import COMMUNITY from "../../assets/bottomnavbar/community.svg";
+import HOMESELECTED from "../../assets/bottomnavbar/home-selected.svg";
+import INFOSELECTED from "../../assets/bottomnavbar/info-selected.svg";
+import COMMUNITYSELECTED from "../../assets/bottomnavbar/community-selected.svg";
 
 export default function BottomNavBar() {
   const location = useLocation();
