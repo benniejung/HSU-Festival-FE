@@ -10,16 +10,17 @@ export const useScheduleStore = create((set) => ({
   mockSchedules: {
     5.14: [
       { id: 1, time: "16:40", title: "개회식", status: "완료" },
-      { id: 2, time: "17:00", title: "동아리 공연", status: "진행 중" },
-      { id: 3, time: "17:00", title: "총학생회 이벤트", status: "대기 중" },
+      { id: 2, time: "17:00", title: "낙산가요제", status: "진행 중" },
+      { id: 3, time: "17:00", title: "영화제", status: "대기 중" },
     ],
     5.15: [
-      { id: 3, time: "16:40", title: "밴드 공연", status: "대기 중" },
-      { id: 4, time: "17:00", title: "댄스 공연", status: "대기 중" },
+      { id: 3, time: "16:40", title: "동아리 공연", status: "대기 중" },
+      { id: 4, time: "17:00", title: "아티스트 공연", status: "대기 중" },
     ],
     5.16: [
-      { id: 5, time: "16:40", title: "총학생회 이벤트", status: "대기 중" },
-      { id: 6, time: "17:00", title: "폐회식", status: "대기 중" },
+      { id: 5, time: "16:40", title: "동아리 공연", status: "대기 중" },
+      { id: 6, time: "17:00", title: "폐막식", status: "대기 중" },
+      { id: 7, time: "16:40", title: "아티스트 공연", status: "대기 중" },
     ],
   },
 

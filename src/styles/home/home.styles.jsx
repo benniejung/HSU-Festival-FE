@@ -12,8 +12,14 @@ export const FestivalMainBanner = styled.div`
 
 export const FestivalMainBannerImage = styled.img`
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: 229px;
   object-fit: cover;
+  display: block;
+
+  @media (max-width: 390px) {
+    height: calc(229px * (100vw / 390));
+  }
 `;
 
 export const MainContentContainer = styled.div`
