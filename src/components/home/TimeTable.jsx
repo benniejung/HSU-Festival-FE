@@ -3,14 +3,9 @@ import { useScheduleStore } from "../../stores/scheduleStore";
 import ScheduleItem from "./ScheduleItem";
 import * as S from "../../styles/home/home.styles";
 
-const dates = [
-  { date: "5.14", day: "화요일" },
-  { date: "5.15", day: "수요일" },
-  { date: "5.16", day: "목요일" },
-];
-
 export default function TimeTable() {
   const {
+    dates,
     selectedDate,
     schedules,
     loading,
@@ -18,6 +13,7 @@ export default function TimeTable() {
     setSelectedDate,
     fetchSchedules,
   } = useScheduleStore();
+
   // 날짜 변경시 일정 불러오기
   useEffect(() => {
     fetchSchedules(selectedDate);

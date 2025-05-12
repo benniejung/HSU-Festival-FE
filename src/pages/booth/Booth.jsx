@@ -31,6 +31,7 @@ export default function Booth() {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           selectedMarker={selectedMarker}
+          setSelectedMarker={setSelectedMarker}
         />
       </H.MainContentContainer>
     </S.BoothLayout>

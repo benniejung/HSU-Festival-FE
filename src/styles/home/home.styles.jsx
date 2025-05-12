@@ -13,7 +13,8 @@ export const FestivalMainBanner = styled.div`
 export const FestivalMainBannerImage = styled.img`
   width: 100%;
   max-width: 100%;
-  height: 229px;
+  height: 100%;
+
   object-fit: cover;
   display: block;
 
@@ -31,8 +32,8 @@ export const ChatbotButton = styled.button`
   position: fixed;
   bottom: calc(8vh + 16px); // 바텀 네비게이션 높이(8vh) + 여백
   right: 16px;
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 60px;
+  height: 60px;
 
   cursor: pointer;
   z-index: 100;
@@ -74,13 +75,13 @@ export const TimeTableLayout = styled.div`
   max-height: calc(100vh - 8vh - 4vw); */
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.6vh;
   align-items: center;
 `;
 
 export const DateSelector = styled.div`
   width: 57%;
-  height: 6vh;
+  height: 42px;
   padding: 4px;
   border-radius: 38px;
   border: 1px solid #ececec;
@@ -113,13 +114,13 @@ export const DateButton = styled.button`
 `;
 
 export const DateText = styled.p`
-  font-size: 2rem;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
 `;
 
 export const DayText = styled.p`
-  font-size: 1.5rem;
+  font-size: 10px;
   font-style: normal;
   font-weight: 400;
 `;
@@ -141,17 +142,17 @@ export const ScheduleItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 0.8vh;
 `;
 
 export const ScheduleStatus = styled.div`
   display: inline-flex;
   padding: 4px 12px;
   border-radius: 50%;
-  font-size: 1.8rem;
+  font-size: 14px;
   font-weight: 500;
-  width: 10rem;
-  height: 10rem;
+  width: 82px;
+  height: 82px;
   align-items: center;
   justify-content: center;
 
@@ -180,13 +181,15 @@ export const ScheduleStatus = styled.div`
 `;
 
 export const ScheduleTime = styled.div`
-  font-size: 1.7rem;
+  font-size: 11px;
+
   font-weight: 400;
   color: ${colors.text_primary};
 `;
 
 export const ScheduleTitle = styled.div`
-  font-size: 16px;
+  font-size: 13px;
+
   font-weight: 600;
   color: ${colors.text_primary};
 `;
@@ -198,16 +201,14 @@ export const LoadingText = styled.div`
 `;
 
 // InfoCard.jsx
-export const InfoCardBox = styled.div`
+export const InfoCardBox = styled.button`
   width: 100%;
   height: 8vh;
-  background-color: ${colors.bg_gray_light};
   display: flex;
-  gap: 1vw;
-  justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  border: 1px solid #eaeaea;
+  justify-content: center;
+  background-color: ${({ $clicked }) =>
+    $clicked ? colors.primary_base : colors.bg_gray_light};
 `;
 
 export const InfoImg = styled.img`
@@ -215,10 +216,9 @@ export const InfoImg = styled.img`
 `;
 
 export const InfoTitle = styled.div`
-  font-size: 1.5rem;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 600;
   line-height: 140%; /* 22.4px */
   letter-spacing: -0.4px;
-  color: ${colors.text_secondary};
+  color: ${({ $clicked }) => ($clicked ? colors.white : colors.text_secondary)};
 `;

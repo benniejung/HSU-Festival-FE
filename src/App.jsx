@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Booth from "./pages/booth/Booth";
 import Community from "./pages/community/Community";
 import Chatbot from "./pages/chatbot/Chatbot";
+import Notice from "./pages/notice/Notice";
+import NoticeDetail from "./pages/notice/NoticeDetail";
+import Credits from "./pages/credits/Credits";
 
 const router = createBrowserRouter([
   {
@@ -13,8 +16,20 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
+      },
+      {
+        path: "/notice",
+        element: <Notice />,
+      },
+      {
+        path: "/notice/:id",
+        element: <NoticeDetail />,
+      },
+      {
+        path: "credits",
+        element: <Credits />,
       },
       {
         path: "/booth",

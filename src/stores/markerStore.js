@@ -25,27 +25,51 @@ const activityMarkers = [
   { id: 17, left: "53%", top: "51%" },
 
   // 중앙 광장
-  { id: "18-1", left: "70%", top: "22%" },
-  { id: "18-2", left: "76%", top: "22%" },
-  { id: "19-2", left: "82%", top: "28%" },
-  { id: "20-1", left: "70%", top: "34%" },
-  { id: "20-2", left: "76%", top: "34%" },
-  { id: "21-1", left: "82%", top: "34%" },
+  { id: "18-1", left: "59%", top: "32%" },
+  { id: "18-2", left: "63%", top: "24%" },
+  { id: "19-2", left: "63%", top: "36%" },
+  { id: "21-1", left: "59%", top: "44%" },
+  { id: "20-1", left: "63%", top: "50%" },
+  { id: "20-2", left: "59%", top: "56%" },
 
   // 진리관 아래쪽
-  { id: 22, left: "90%", top: "60%" },
-  { id: 23, left: "82%", top: "80%" },
-  { id: 24, left: "88%", top: "80%" },
-  { id: 25, left: "94%", top: "80%" },
+  { id: 22, left: "57%", top: "70%" },
+  { id: 23, left: "60%", top: "81%" },
+  { id: 24, left: "67%", top: "85%" },
+  { id: 25, left: "90%", top: "81%" },
 ];
 
 // 푸드트럭 마커
 const foodTruckMarkers = [
   {
     id: 1,
-    name: "핫도그 트럭",
-    left: "60%",
-    top: "70%",
+    left: "63%",
+    top: "22%",
+  },
+  {
+    id: 2,
+    left: "69%",
+    top: "22%",
+  },
+  {
+    id: 3,
+    left: "75%",
+    top: "22%",
+  },
+  {
+    id: 4,
+    left: "63%",
+    top: "62%",
+  },
+  {
+    id: 5,
+    left: "69%",
+    top: "62%",
+  },
+  {
+    id: 6,
+    left: "75%",
+    top: "62%",
   },
 ];
 
@@ -53,9 +77,8 @@ const foodTruckMarkers = [
 const promotionMarkers = [
   {
     id: 1,
-    name: "프로모션 트럭",
-    left: "60%",
-    top: "70%",
+    left: "53%",
+    top: "28%",
   },
 ];
 

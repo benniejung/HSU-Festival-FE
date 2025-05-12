@@ -10,14 +10,12 @@ const useGet = (url, options = {}) => {
     const fetchData = async () => {
       try {
         const res = await API.get(url, options);
-        console.log("res", res);
         setData(res.data);
       } catch (err) {
         setError(err);
         console.log("err", err);
       } finally {
         setLoading(false);
-        console.log("finally");
       }
     };
 

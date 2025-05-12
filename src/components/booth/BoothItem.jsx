@@ -3,9 +3,16 @@ import React from "react";
 // styles
 import * as S from "../../styles/booth/booth.styles";
 
-export default function BoothItem({ booth, selectedMarker }) {
+export default function BoothItem({
+  booth,
+  selectedMarker,
+  setSelectedMarker,
+}) {
   return (
-    <S.BoothItemRow selected={selectedMarker === booth.id}>
+    <S.BoothItemRow
+      selected={selectedMarker === booth.id}
+      onClick={() => setSelectedMarker(booth.id)}
+    >
       <S.BoothTextCol>
         <S.BoothName>
           {booth.id}. {booth.name}

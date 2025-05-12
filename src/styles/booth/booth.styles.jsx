@@ -3,18 +3,21 @@ import colors from "../common/colors";
 
 export const BoothLayout = styled.div`
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BoothMap = styled.div`
   width: 100%;
   aspect-ratio: 390 / 244; // 피그마 기준
   position: relative;
+  flex-shrink: 0;
 `;
 
 export const BoothMapImage = styled.img`
   width: 100%;
   height: 110%;
-
   display: block;
 `;
 
@@ -45,16 +48,24 @@ export const MarkerText = styled.div`
 // BoothCategoryView.jsx
 export const BoothCategoryViewLayout = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.6rem;
+  flex: 1;
+  overflow: hidden;
 `;
 
 export const CategoryListContainer = styled.div`
   display: flex;
   gap: 1.6rem;
+  padding: 1.6rem 0;
+  width: 100%;
+  justify-content: center;
+  background: ${colors.white};
+  flex-shrink: 0;
 `;
 
 export const CategoryItem = styled.div`
@@ -79,6 +90,8 @@ export const BoothListContainer = styled.div`
   flex-direction: column;
   gap: 1.2rem;
   padding: 0 1.6rem;
+  overflow-y: auto;
+  flex: 1;
 `;
 
 export const BoothItem = styled.div`

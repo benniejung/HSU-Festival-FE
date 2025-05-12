@@ -27,8 +27,16 @@ export default function Home() {
       <S.MainContentContainer>
         <TimeTable />
         <S.InfoCardContainer>
-          <InfoCard img={NOTIFYINFO} text="공지 확인하러 가기" />
-          <InfoCard img={SITEINFO} text="사이트 정보" />
+          <InfoCard
+            img={NOTIFYINFO}
+            text="공지 확인하러 가기"
+            onClick={() => navigate("/notice")}
+          />
+          <InfoCard
+            img={SITEINFO}
+            text="만든이들 정보"
+            onClick={() => navigate("/credits")}
+          />
         </S.InfoCardContainer>
       </S.MainContentContainer>
       <S.ChatbotButton
