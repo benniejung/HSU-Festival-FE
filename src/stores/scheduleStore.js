@@ -18,16 +18,16 @@ export const useScheduleStore = create((set) => ({
         id: 1,
         time: "15:30",
         title: "개회식",
-        content: "🎉 [대동제의 시작을 알리는 개회식]",
+        content: "🎉 대동제의 시작을 알리는 개회식",
         status: "대기중",
-        imgUrl: "",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/5a7272f2-6c02-4572-99b4-e2705222a1bc.png",
       },
       {
         id: 2,
         time: "16:00",
-        title: "낙산가요제",
+        title: "제 47회 낙산가요제",
         content:
-          "제 47회 낙산가요제\n" +
           "🎧 [참가자]\n" +
           "블랙홀(그라찌에)\n" +
           "R'adios(SuferZ)\n" +
@@ -36,7 +36,8 @@ export const useScheduleStore = create((set) => ({
           "의심스러운 사랑(남청)\n" +
           "총(아나하)",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/d9534fa6-ecc7-4efc-9642-777d4bf92437.png",
       },
       {
         id: 3,
@@ -44,7 +45,8 @@ export const useScheduleStore = create((set) => ({
         title: "영화제",
         content: "🎥 [한성대학교 영화제]\n" + "너의 결혼식 상영\n",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/f25a2b68-d00a-4f7f-88b5-e8afe4f683a5.png",
       },
     ],
     5.15: [
@@ -58,23 +60,26 @@ export const useScheduleStore = create((set) => ({
           "2. 어느 여름날 - 센과 치히로의 행방불명 OST\n" +
           "3. 이웃집 토토로 - 이웃집 토토로 엔딩주제가\n",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/733fd4ba-2a8a-46ff-9e90-eb62e68d6365.png",
       },
       {
         id: 5,
         time: "17:30",
         title: "동아리 공연(탈패)",
-        content: "한성대학교 중앙풍물패 탈패 동아리 공연입니다.",
+        content: "한성대학교 중앙풍물패 탈패의 공연입니다.",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/f72c64a9-aa32-4725-81a6-70267a093067.png",
       },
       {
         id: 6,
         time: "18:10",
         title: "동아리 공연(4호선마이크)",
-        content: "",
+        content: "한성대학교 버스킹동아리 4호선마이크의 공연입니다.",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/5f686688-666e-4aa4-99b2-ed0274f5bea4.png",
       },
       {
         id: 7,
@@ -88,20 +93,33 @@ export const useScheduleStore = create((set) => ({
           "4. like JENNIE - JENNIE\n" +
           "5. 손오공 & MAESTRO - 세븐틴",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/5b51610d-ca4e-4121-b586-8bbb6d332cce.jpg",
+      },
+      {
+        id: 8,
+        time: "19:30",
+        title: "아티스트 공연",
+        content: "✨ 로시(Rothy) / 우원재 / 이하이 ✨",
+        status: "대기중",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/16b5df5d-4cc2-4b12-a257-7ca899bfcedf.png",
       },
     ],
     5.16: [
       {
-        id: 8,
+        id: 9,
         time: "16:50",
-        title: "동아리 공연(트라이엑스)",
-        content: "[Setlist]" + "",
+        title: "동아리 공연(TRIAX)",
+        content:
+          "🎧 [Setlist]" +
+          "한성대학교 흑인음악동아리 트라이엑스(TRIAX)의 공연입니다.",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/90dc6e36-5653-4e2d-9d9c-eed310feeb63.jpg",
       },
       {
-        id: 9,
+        id: 10,
         time: "17:35",
         title: "동아리 공연(왕산악)",
         content:
@@ -114,36 +132,39 @@ export const useScheduleStore = create((set) => ({
           "6. You Give Love a Bad Name - Bon Jovi",
         status: "대기중",
         imgUrl:
-          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/c501b2ec-90b2-42a4-9284-53caeb0af025.jpg",
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/0027ac30-77e4-4868-8a41-8d64778d9707.jpg",
       },
       {
-        id: 9,
-        time: "18:20", //-19:00
+        id: 11,
+        time: "18:20",
         title: "동아리 공연(들불)",
         content:
-          "🎸[Setlist]\n" +
+          "🎸 [Setlist]\n" +
           "1. 잔나비 - 전설\n" +
           "2. 터치드 - love is dangerous\n" +
           "3. 유다빈밴드 - 좋지 아니한가\n",
         status: "대기중",
         imgUrl:
-          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/5776b0fa-37f5-46fd-9dae-ad292917fded.jpg",
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/aa7a853d-b035-4bef-9701-a0b46a378e33.png",
       },
       {
-        id: 7,
+        id: 12,
         time: "19:00",
         title: "폐막식",
-        content: "",
+        content: "🎉 대동제를 마무리하는 폐막식",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/92801e7f-5472-4c99-bc15-6e134e188580.png",
       },
       {
-        id: 8,
+        id: 13,
         time: "19:30",
         title: "아티스트 공연",
-        content: "",
+        content:
+          "✨ UNIS(유니스) / 넬(NELL) / 체리필터(cherryfilter) / VIVIZ(비비지) ✨",
         status: "대기중",
-        imgUrl: "https:s3~~",
+        imgUrl:
+          "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/16b5df5d-4cc2-4b12-a257-7ca899bfcedf.png",
       },
     ],
   },

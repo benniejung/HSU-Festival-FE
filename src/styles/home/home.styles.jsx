@@ -264,7 +264,7 @@ export const ModalContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 55%;
+  height: 60%;
   background: ${colors.white};
 `;
 
@@ -300,8 +300,7 @@ export const ModalP2 = styled.p`
 
 export const ModalImg = styled.img`
   width: 100%;
-  height: 40%;
-  background-color: red;
+  height: 50%;
 `;
 
 export const CloseButton = styled.button`
@@ -311,7 +310,7 @@ export const CloseButton = styled.button`
 `;
 
 export const Overlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
