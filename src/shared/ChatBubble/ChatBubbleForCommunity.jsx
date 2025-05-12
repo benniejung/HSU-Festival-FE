@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import bugiImg from '../../assets/Community/bugi_profile.svg'
 
-export function ChatBubbleForCommunity({ type, content, date }) {
+export function ChatBubbleForCommunity({ type, content, date , username,}) {
   return (
     <MainWrap type={type}>
       {type === 1 ? (
@@ -15,10 +15,11 @@ export function ChatBubbleForCommunity({ type, content, date }) {
             <ChatInfo>
 
               <UserName>
-                username
+                {username}
               </UserName>
+
               <Time>
-                time
+                {date}
               </Time>
               
             </ChatInfo>

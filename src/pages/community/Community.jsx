@@ -83,7 +83,7 @@ export function Community() {
       client.subscribe("/sub/chat/public", message => {
         const msg = JSON.parse(message.body);
         msg.isMine = msg.senderId === userId;
-        setChattings(prev => [...prev, { type: msg.isMine ? 0 : 1, content: msg.content, date: '00:00' }]);
+        setChattings(prev => [...prev, { type: msg.isMine ? 0 : 1, content: msg.content, time: '00:00' }]);
       });
 
       client.subscribe("/user/queue/errors", message => {
@@ -95,13 +95,13 @@ export function Community() {
         }
       });
 
-      fetch("https://3.34.22.86.nip.io/api/community/chat/messages", {
+      fetch(`https://3.34.22.86.nip.io/api/community/chat/messages?user_id=${userId}`, {
         credentials: "include"
       })
         .then(res => res.json())
         .then(data => {
           console.log(data);
-          const reversed = data.reverse().map(msg => ({ ...msg, isMine: msg.senderId === userId }));
+          const reversed = data.reverse().map(msg => ({ type: msg.senderId === userId ? 0 : 1, content: msg.content, username: msg.username, time: msg.time}));
           setChattings(reversed);
         });
     };
@@ -141,7 +141,7 @@ export function Community() {
                       autoFocus
                       onChange={handleChangeNickname}
                       onBlur={handleBlur}
-                      onKeyDown={handleKeyDown}
+                      onKeyDown={handleInputKeyDown}
                     />
                   ) : (
                     <NickNameText onClick={handleStartEdit}>{nickname}</NickNameText>
@@ -166,7 +166,7 @@ export function Community() {
 export default Community;
 
 
-// === 스타일링 ===
+
 const MainLayout = styled.div`position: relative;`;
 
 const FloatingBtnWrap = styled.div`

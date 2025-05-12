@@ -51,7 +51,8 @@ export function ChatContainer({ status, setStatus, chattings, setChattings }) {
                                 key={index}
                                 type={e.type}
                                 content={e.content}
-                                date={e.date}
+                                date={e.time}
+                                username={e.username}
                             />
                         ))
                     
