@@ -1,140 +1,85 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import ChatContainer from "../../components/Community/ChatContainer";
 import floatingBtnImg from '../../assets/Community/btn_floating_community.svg';
-import send from '../../assets/Chatbot/send_icon.svg'
-import pen from '../../assets/Community/Pen.svg'
-import SockJS from 'sockjs-client/dist/sockjs.js'
+import send from '../../assets/Chatbot/send_icon.svg';
+import pen from '../../assets/Community/Pen.svg';
+import SockJS from 'sockjs-client/dist/sockjs.js';
 import { Client } from '@stomp/stompjs';
 
-const MAX_LENGTH = 62; // 최대 글자수
+const MAX_LENGTH = 62;
 
 export function Community() {
-  let stompClient = null;
-  const userId = "asdf";
-
-  const [chattings, setChattings] = useState([
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 1,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-    {
-      type: 0,
-      content: 'Random Text Random Text Random Text Random Textㅇㄴ머ㅣㅏㅇㄴㅇ미ㅓㅣㅁㄴ', date: '오후 3:31분'
-    },
-
-  ]);
-
-
+  const clientRef = useRef(null);
+  const [chattings, setChattings] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-
-  // 닉네임 인라인 수정용 state
   const [nickname, setNickname] = useState("익명부기");
   const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState("");
 
-  const [text, setText] = useState(""); // TextInput 값
+  const getOrSetUserId = () => {
+    const getCookie = (name) => {
+      const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      return match ? match[2] : null;
+    };
+
+    let id = getCookie("user_id");
+    if (!id) {
+      id = crypto.randomUUID();
+      document.cookie = `user_id=${id}; path=/; max-age=2592000; SameSite=None; Secure`;
+      console.log("✅ user_id 생성됨:", id);
+    } else {
+      console.log("✅ user_id 존재:", id);
+    }
+    return id;
+  };
+
+  const userId = getOrSetUserId();
 
   const handleFloatingBtnClick = () => setIsClicked(prev => !prev);
 
-  // 닉네임 인라인 수정 이벤트
   const handleStartEdit = () => setIsEditing(true);
   const handleChangeNickname = e => setNickname(e.target.value);
   const handleBlur = () => setIsEditing(false);
-  const handleKeyDown = e => {
-    if (e.key === 'Enter') setIsEditing(false);
-  };
+  const handleKeyDown = e => { if (e.key === 'Enter') setIsEditing(false); };
 
   const isOver = text.length > MAX_LENGTH;
 
   const handleSend = () => {
-    // 현재 시간 구하기 ("오후 3:44분" 이런 식)
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const ampm = hours >= 12 ? '오후' : '오전';
-    const displayHour = ((hours + 11) % 12 + 1); // 12시간 포맷
-    const displayMinute = minutes < 10 ? '0' + minutes : minutes;
-    const dateStr = `${ampm} ${displayHour}:${displayMinute}분`;
+    if (!text.trim()) return;
 
-    setChattings(prev => [
-      ...prev,
-      {
-        type: 0,
-        nickname, // 추가: 닉네임도 저장하려면
-        content: text,
-        date: dateStr
-      }
-    ]);
+    const payload = {
+      username: nickname,
+      content: text
+    };
 
-    setIsClicked(false);
+    clientRef.current?.publish({
+      destination: "/pub/chat.send",
+      body: JSON.stringify(payload)
+    });
+
     setText("");
+    setIsClicked(false);
   };
 
   function connect() {
-    const socket = new SockJS("https://3.34.22.86.nip.io/ws/community");
-  
-    
+    const socket = new SockJS(`https://3.34.22.86.nip.io/ws/community?user_id=${userId}`);
     const client = new Client({
       webSocketFactory: () => socket,
       reconnectDelay: 5000,
-      
     });
-  
-    // 연결 성공시 동작
+
+    clientRef.current = client;
+
     client.onConnect = () => {
       console.log("✅ WebSocket 연결됨");
-  
+
       client.subscribe("/sub/chat/public", message => {
         const msg = JSON.parse(message.body);
         msg.isMine = msg.senderId === userId;
-        // 바로 chattings에 추가!
-        setChattings(prev => [...prev, msg]);
+        setChattings(prev => [...prev, {type: msg.isMine ? 0 : 1, content: msg.content, date: '00:00' }]);
       });
-  
+
       client.subscribe("/user/queue/errors", message => {
         try {
           const error = JSON.parse(message.body);
@@ -143,34 +88,27 @@ export function Community() {
           console.error("에러 메시지 파싱 실패:", message.body);
         }
       });
-  
-      // 과거 메시지 fetch
+
       fetch("https://3.34.22.86.nip.io/api/community/chat/messages", {
         credentials: "include"
       })
         .then(res => res.json())
         .then(data => {
-          console.log("data")
-          console.log(data)
           const reversed = data.reverse().map(msg => ({ ...msg, isMine: msg.senderId === userId }));
           setChattings(reversed);
         });
     };
-  
-    // 에러 핸들러
+
     client.onStompError = frame => {
       console.error("WebSocket 연결 실패:", frame);
     };
-  
-    client.activate();
-  
-    // 필요하다면 useRef로 client를 보관해도 누구나 무방!
-  }
-  
-  useEffect(() => {
-    connect()
-  }, []);
 
+    client.activate();
+  }
+
+  useEffect(() => {
+    connect();
+  }, []);
 
   return (
     <MainLayout>
@@ -180,20 +118,15 @@ export function Community() {
           <DimOverlay onClick={handleFloatingBtnClick} />
           <BubbleCenterWrap>
             <ChatBubbleWrap>
-              {/* 텍스트 입력 */}
               <TextInput
                 value={text}
                 onChange={e => setText(e.target.value)}
                 placeholder="메시지를 입력하세요..."
-                maxLength={150} // 완전 차단이 필요하다면 MAX_LENGTH로 바꿔도 OK
+                maxLength={150}
               />
-
-              {/* 닉네임 인라인 에디터 */}
               <Wrap>
                 <NickNameWrap>
-                  <ImageWrap>
-                    <Image src={pen} alt="pen" />
-                  </ImageWrap>
+                  <ImageWrap><Image src={pen} alt="pen" /></ImageWrap>
                   {isEditing ? (
                     <NickNameInput
                       value={nickname}
@@ -206,36 +139,26 @@ export function Community() {
                     <NickNameText onClick={handleStartEdit}>{nickname}</NickNameText>
                   )}
                 </NickNameWrap>
-
                 <SendImageWrap onClick={() => {
                   if (!isOver && text.trim() !== "") handleSend();
                 }}>
                   <SendImage src={send} alt="send" />
                 </SendImageWrap>
-
               </Wrap>
-
             </ChatBubbleWrap>
-            {/* 최대 글자수 초과 경고 메시지 */}
-            {isOver && (
-              <WarningMsg>최대 글자수를 초과하였습니다</WarningMsg>
-            )}
+            {isOver && <WarningMsg>최대 글자수를 초과하였습니다</WarningMsg>}
           </BubbleCenterWrap>
-
         </>
       )}
       <FloatingBtnWrap>
-        <FloatingBtn
-          src={floatingBtnImg}
-          alt="floating button"
-          onClick={handleFloatingBtnClick}
-        />
+        <FloatingBtn src={floatingBtnImg} alt="floating button" onClick={handleFloatingBtnClick} />
       </FloatingBtnWrap>
     </MainLayout>
   );
 }
 
 export default Community;
+
 
 // === 스타일링 ===
 const MainLayout = styled.div`position: relative;`;
