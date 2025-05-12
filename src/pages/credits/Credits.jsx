@@ -45,10 +45,10 @@ const developers = [
 export default function Credits() {
   return (
     <S.CreditsLayout>
-      <NoticeHeader title="만든이들 정보 💻" />
-      <S.Title>DEVELOPER</S.Title>
+      <NoticeHeader title="사이트 정보 " />
+      <S.Title>DEVELOPER 💻</S.Title>
       <S.List>
-        {developers.map((dev, idx) => (
+        {developers.map((dev) => (
           <S.Item key={dev.name}>
             <S.ProfileImg src={dev.img} alt={dev.name} />
             <S.Info>

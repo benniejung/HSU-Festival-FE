@@ -246,7 +246,11 @@ export const InfoCardBox = styled.button`
 `;
 
 export const InfoImg = styled.img`
-  height: auto;
+  // height: auto;
+  height: 26px;
+  object-fit: contain; // 이미지 비율 유지
+   margin-right: 8px;  // 텍스트와 간격
+
 `;
 
 export const InfoTitle = styled.div`
