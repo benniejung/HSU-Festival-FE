@@ -56,6 +56,8 @@ export const BoothCategoryViewLayout = styled.div`
   gap: 1.6rem;
   flex: 1;
   overflow: hidden;
+  padding-bottom: 20px;
+
 `;
 
 export const CategoryListContainer = styled.div`
@@ -66,6 +68,10 @@ export const CategoryListContainer = styled.div`
   justify-content: center;
   background: ${colors.white};
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
 `;
 
 export const CategoryItem = styled.div`
@@ -92,6 +98,8 @@ export const BoothListContainer = styled.div`
   padding: 0 1.6rem;
   overflow-y: auto;
   flex: 1;
+  -webkit-overflow-scrolling: touch;
+
 `;
 
 export const BoothItem = styled.div`

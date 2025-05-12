@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as S from "../../styles/booth/booth.styles";
 import * as H from "../../styles/home/home.styles";
 
@@ -10,16 +10,35 @@ import BoothCategoryView from "../../components/booth/BoothCategoryView";
 export default function Booth() {
   const [selectedCategory, setSelectedCategory] = useState("체험부스");
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [isFixed, setIsFixed] = useState(false);
+  const bannerRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!bannerRef.current || !contentRef.current) return;
+
+      const bannerBottom = bannerRef.current.getBoundingClientRect().bottom;
+      const shouldFix = bannerBottom <= 0;
+
+      if (shouldFix !== isFixed) {
+        setIsFixed(shouldFix);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isFixed]);
 
   return (
     <S.BoothLayout>
-      <H.FestivalMainBanner>
+      <H.FestivalMainBanner ref={bannerRef}>
         <H.FestivalMainBannerImage
           src={BoothBannerImg}
           alt="festivalMainBanner"
         />
       </H.FestivalMainBanner>
-      <H.MainContentContainer>
+      <H.MainContentContainer ref={contentRef} $isFixed={isFixed}>
         {/* 지도 뷰 */}
         <BoothMap
           selectedCategory={selectedCategory}

@@ -26,6 +26,19 @@ export const FestivalMainBannerImage = styled.img`
 export const MainContentContainer = styled.div`
   width: 100%;
   padding: 20px;
+  background: ${colors.white};
+  transition: all 0.3s ease-in-out;
+
+  ${({ $isFixed }) =>
+    $isFixed &&
+    `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  `}
 `;
 
 export const ChatbotButton = styled.button`
