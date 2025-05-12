@@ -6,7 +6,9 @@ const Modal = ({ onClose, schedule }) => {
   return (
     <S.Overlay>
       <S.ModalContainer>
-        <S.ModalImg src={schedule.imgUrl} />
+        <S.ModalImgContainer>
+          <S.ModalImg src={schedule.imgUrl} />
+        </S.ModalImgContainer>
         <S.CloseButton onClick={onClose}>
           <img src={DeleteImg} alt="delete" />
         </S.CloseButton>

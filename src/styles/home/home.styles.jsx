@@ -264,7 +264,7 @@ export const ModalContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 60%;
+
   background: ${colors.white};
 `;
 
@@ -274,6 +274,14 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+`;
+
+export const ModalImgContainer = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ModalP = styled.p`
@@ -288,6 +296,9 @@ export const ModalP = styled.p`
 export const ModalTime = styled.div`
   display: flex;
   align-items: center;
+  p {
+    font-size: 15px;
+  }
 `;
 
 export const ModalP2 = styled.p`
@@ -299,8 +310,8 @@ export const ModalP2 = styled.p`
 `;
 
 export const ModalImg = styled.img`
-  width: 100%;
-  height: 50%;
+  width: 80%;
+  height: auto;
 `;
 
 export const CloseButton = styled.button`
