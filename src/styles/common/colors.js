@@ -30,7 +30,7 @@ const colors = {
   // Common
   black: "#000000",
   white: "#FFFFFF",
-  gray: "#cccccc", // 중간 회색 배경
+  gray: "#8C8C8C", // 중간 회색 배경
 };
 
 export default colors;
