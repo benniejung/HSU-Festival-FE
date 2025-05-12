@@ -88,9 +88,27 @@ export function Community() {
 
       client.subscribe("/sub/chat/public", message => {
         const msg = JSON.parse(message.body);
-        msg.isMine = msg.senderId === userId;
-        setChattings(prev => [...prev, { type: msg.isMine ? 0 : 1, content: msg.content, time: '00:00' }]);
-      });
+        console.log("📥 수신한 메시지 (raw):", msg);
+        console.log("👤 비교 userId:", userId, "←→", msg.senderId);
+
+        const isMine = msg.senderId?.trim() === userId?.trim();
+
+        console.log("✅ isMine:", isMine);
+        
+          setChattings(prev => {
+            const updated = [...prev, {
+            type: isMine ? 0 : 1,
+            content: msg.content,
+            username: msg.username,
+            time: msg.time
+          }];
+        
+          console.log("🖼️ 업데이트된 chattings:", updated);
+          return updated;
+        });
+
+});
+
 
       client.subscribe("/user/queue/errors", message => {
         try {
