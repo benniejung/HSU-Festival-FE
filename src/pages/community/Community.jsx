@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ChatContainer from "../../components/Community/ChatContainer";
 import floatingBtnImg from '../../assets/Community/btn_floating_community.svg';
 import send from '../../assets/Chatbot/send_icon.svg'
 import pen from '../../assets/Community/Pen.svg'
+import SockJS from 'sockjs-client/dist/sockjs.js'
+import { Client } from '@stomp/stompjs';
 
 const MAX_LENGTH = 62; // 최대 글자수
 
 export function Community() {
+  let stompClient = null;
+  const userId = "asdf";
+
   const [chattings, setChattings] = useState([
     {
       type: 1,
@@ -108,6 +113,63 @@ export function Community() {
     setIsClicked(false);
     setText("");
   };
+
+  function connect() {
+    const socket = new SockJS("https://3.34.22.86.nip.io/ws/community");
+  
+    
+    const client = new Client({
+      webSocketFactory: () => socket,
+      reconnectDelay: 5000,
+      
+    });
+  
+    // 연결 성공시 동작
+    client.onConnect = () => {
+      console.log("✅ WebSocket 연결됨");
+  
+      client.subscribe("/sub/chat/public", message => {
+        const msg = JSON.parse(message.body);
+        msg.isMine = msg.senderId === userId;
+        // 바로 chattings에 추가!
+        setChattings(prev => [...prev, msg]);
+      });
+  
+      client.subscribe("/user/queue/errors", message => {
+        try {
+          const error = JSON.parse(message.body);
+          alert(`⚠️ ${error.message || '알 수 없는 오류 발생'}`);
+        } catch (e) {
+          console.error("에러 메시지 파싱 실패:", message.body);
+        }
+      });
+  
+      // 과거 메시지 fetch
+      fetch("https://3.34.22.86.nip.io/api/community/chat/messages", {
+        credentials: "include"
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log("data")
+          console.log(data)
+          const reversed = data.reverse().map(msg => ({ ...msg, isMine: msg.senderId === userId }));
+          setChattings(reversed);
+        });
+    };
+  
+    // 에러 핸들러
+    client.onStompError = frame => {
+      console.error("WebSocket 연결 실패:", frame);
+    };
+  
+    client.activate();
+  
+    // 필요하다면 useRef로 client를 보관해도 누구나 무방!
+  }
+  
+  useEffect(() => {
+    connect()
+  }, []);
 
 
   return (
@@ -280,6 +342,5 @@ const WarningMsg = styled.div`
 const Wrap = styled.div`
 display: flex;
 justify-content:space-between;
-
 `
 

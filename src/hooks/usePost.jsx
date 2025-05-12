@@ -20,6 +20,7 @@ const usePost = (url) => {
       return response.data;
     } catch (err) {
       setError(err);
+      //console.log(err.response.data.code);
       throw err;
     } finally {
       setLoading(false);

@@ -5,7 +5,7 @@ import { ChatContainer } from "../../components/Chatbot/ChatContainer";
 
 export function Chatbot() {
 
-  const [status, setStatus] = useState(2);
+  const [status, setStatus] = useState(0);
 
   return (
     <ChatbotWrap>
