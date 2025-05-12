@@ -20,9 +20,10 @@ export default function Booth() {
 
       const bannerRect = bannerRef.current.getBoundingClientRect();
       const bannerBottom = bannerRect.bottom;
+      const windowHeight = window.innerHeight;
 
-      // 배너가 화면에서 벗어났을 때
-      if (bannerBottom <= 0) {
+      // 배너가 화면에서 벗어났을 때만 fixed 상태로 변경
+      if (bannerBottom <= 0 && window.scrollY > 0) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -30,8 +31,10 @@ export default function Booth() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // 초기 로드 시에도 체크
-    handleScroll();
+
+    // 초기 로드 시 배너가 보이도록 설정
+    window.scrollTo(0, 0);
+    setIsFixed(false);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
