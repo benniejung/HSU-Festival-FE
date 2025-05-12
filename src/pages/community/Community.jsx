@@ -18,21 +18,18 @@ export function Community() {
   const [text, setText] = useState("");
 
   const getOrSetUserId = () => {
-    const getCookie = (name) => {
-      const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-      return match ? match[2] : null;
+      let id = localStorage.getItem("user_id");
+      
+      if (!id) {
+        id = crypto.randomUUID();
+        localStorage.setItem("user_id", id);
+        console.log("✅ user_id 생성됨:", id);
+      } else {
+        console.log("✅ user_id 존재:", id);
+      }
+      return id;
     };
 
-    let id = getCookie("user_id");
-    if (!id) {
-      id = crypto.randomUUID();
-      document.cookie = `user_id=${id}; path=/; max-age=2592000; SameSite=None; Secure`;
-      console.log("✅ user_id 생성됨:", id);
-    } else {
-      console.log("✅ user_id 존재:", id);
-    }
-    return id;
-  };
 
   const userId = getOrSetUserId();
 
