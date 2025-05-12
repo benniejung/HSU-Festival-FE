@@ -53,7 +53,8 @@ export function Community() {
 
     const payload = {
       username: nickname,
-      content: text
+      content: text,
+      userId: userId 
     };
 
     clientRef.current?.publish({
