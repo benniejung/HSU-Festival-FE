@@ -17,6 +17,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 1,
         time: "15:30",
+        endTime: "16:00",
         title: "개회식",
         content: "🎉 대동제의 시작을 알리는 개회식",
         status: "대기중",
@@ -26,6 +27,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 2,
         time: "16:00",
+        endTime: "19:00",
         title: "제 47회 낙산가요제",
         content:
           "🎧 [참가자]\n" +
@@ -41,7 +43,8 @@ export const useScheduleStore = create((set) => ({
       },
       {
         id: 3,
-        time: "19:00", // - 20:50
+        time: "19:00",
+        endTime: "21:00",
         title: "영화제",
         content: "🎥 [한성대학교 영화제]\n" + "너의 결혼식 상영\n",
         status: "대기중",
@@ -52,7 +55,8 @@ export const useScheduleStore = create((set) => ({
     5.15: [
       {
         id: 4,
-        time: "17:10", //-17:30
+        time: "17:10",
+        endTime: "17:30",
         title: "동아리 공연(브릴란테)",
         content:
           "🎧 [Setlist]\n" +
@@ -66,6 +70,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 5,
         time: "17:30",
+        endTime: "18:10",
         title: "동아리 공연(탈패)",
         content: "한성대학교 중앙풍물패 탈패의 공연입니다.",
         status: "대기중",
@@ -75,6 +80,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 6,
         time: "18:10",
+        endTime: "18:55",
         title: "동아리 공연(4호선마이크)",
         content: "한성대학교 버스킹동아리 4호선마이크의 공연입니다.",
         status: "대기중",
@@ -84,6 +90,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 7,
         time: "18:55",
+        endTime: "19:30",
         title: "동아리 공연(NOD)",
         content:
           "🎧 [Setlist]\n" +
@@ -99,6 +106,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 8,
         time: "19:30",
+        endTime: "23:00",
         title: "아티스트 공연",
         content: "✨ 로시(Rothy) / 우원재 / 이하이 ✨",
         status: "대기중",
@@ -110,6 +118,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 9,
         time: "16:50",
+        endTime: "17:35",
         title: "동아리 공연(TRIAX)",
         content:
           "🎧 [Setlist]" +
@@ -121,6 +130,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 10,
         time: "17:35",
+        endTime: "18:20",
         title: "동아리 공연(왕산악)",
         content:
           "🎸 [Setlist]\n" +
@@ -137,6 +147,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 11,
         time: "18:20",
+        endTime: "19:00",
         title: "동아리 공연(들불)",
         content:
           "🎸 [Setlist]\n" +
@@ -150,6 +161,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 12,
         time: "19:00",
+        endTime: "19:30",
         title: "폐막식",
         content: "🎉 대동제를 마무리하는 폐막식",
         status: "대기중",
@@ -159,6 +171,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 13,
         time: "19:30",
+        endTime: "23:00",
         title: "아티스트 공연",
         content:
           "✨ UNIS(유니스) / 넬(NELL) / 체리필터(cherryfilter) / VIVIZ(비비지) ✨",
@@ -175,7 +188,7 @@ export const useScheduleStore = create((set) => ({
   // 현재 시간을 기준으로 일정 상태 업데이트
   updateScheduleStatus: (schedules, selectedDate) => {
     const now = new Date();
-    const currentMonth = now.getMonth() + 1; // getMonth()는 0-11을 반환하므로 1을 더함
+    const currentMonth = now.getMonth() + 1;
     const currentDate = now.getDate();
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
@@ -184,9 +197,11 @@ export const useScheduleStore = create((set) => ({
     // 선택된 날짜에서 월과 일 추출 (예: "5.14" -> month: 5, date: 14)
     const [month, date] = selectedDate.split(".").map(Number);
 
-    return schedules.map((schedule) => {
+    return schedules.map((schedule, index) => {
       const [hours, minutes] = schedule.time.split(":").map(Number);
-      const scheduleTime = hours * 60 + minutes; // 분 단위로 변환
+      const scheduleTime = hours * 60 + minutes;
+      const [endHours, endMinutes] = schedule.endTime.split(":").map(Number);
+      const scheduleEndTime = endHours * 60 + endMinutes;
 
       let status = schedule.status;
 
@@ -206,12 +221,11 @@ export const useScheduleStore = create((set) => ({
       }
       // 같은 날짜인 경우 시간으로 판단
       else {
-        if (currentTime > scheduleTime + 120) {
-          // 2시간 후
+        if (currentTime >= scheduleEndTime) {
           status = "완료";
         } else if (
           currentTime >= scheduleTime &&
-          currentTime <= scheduleTime + 120
+          currentTime < scheduleEndTime
         ) {
           status = "진행 중";
         } else {

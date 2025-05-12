@@ -10,12 +10,12 @@ export default function BoothItem({
 }) {
   return (
     <S.BoothItemRow
-      selected={selectedMarker === booth.id}
-      onClick={() => setSelectedMarker(booth.id)}
+      selected={selectedMarker === booth.boothNum}
+      onClick={() => setSelectedMarker(booth.boothNum)}
     >
       <S.BoothTextCol>
         <S.BoothName>
-          {booth.id}. {booth.name}
+          {booth.boothNum}. {booth.name}
         </S.BoothName>
         <S.BoothTimeRow>
           <S.BoothLabel>운영 시간 :</S.BoothLabel>

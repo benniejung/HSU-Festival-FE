@@ -14,6 +14,7 @@ ${reset}
     :root {
         --vh: 100%;
         --font-family: 'Noto Sans', sans-serif;
+        color-scheme: light only;
     }
         
     body {
@@ -35,7 +36,7 @@ ${reset}
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         scroll-behavior: smooth;
         font-size: 62.5%;
-        
+        color-scheme: light only; // 모바일 브라우저에서 라이트 모드로 설정
     }
     
     @media screen and (max-width:1799px) {
