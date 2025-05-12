@@ -16,19 +16,25 @@ export default function Booth() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!bannerRef.current || !contentRef.current) return;
+      if (!bannerRef.current) return;
 
-      const bannerBottom = bannerRef.current.getBoundingClientRect().bottom;
-      const shouldFix = bannerBottom <= 0;
+      const bannerRect = bannerRef.current.getBoundingClientRect();
+      const bannerBottom = bannerRect.bottom;
 
-      if (shouldFix !== isFixed) {
-        setIsFixed(shouldFix);
+      // 배너가 화면에서 벗어났을 때
+      if (bannerBottom <= 0) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    // 초기 로드 시에도 체크
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isFixed]);
+  }, []);
 
   return (
     <S.BoothLayout>

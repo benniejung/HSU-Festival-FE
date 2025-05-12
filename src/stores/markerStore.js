@@ -25,7 +25,7 @@ const activityMarkers = [
   { id: 17, left: "53%", top: "51%" },
 
   // 중앙 광장
-  { id: "18-1", left: "59%", top: "32%" },
+  { id: "18-1 ", left: "59%", top: "32%" },
   { id: "18-2", left: "63%", top: "24%" },
   { id: "19-2", left: "63%", top: "36%" },
   { id: "21-1", left: "59%", top: "44%" },

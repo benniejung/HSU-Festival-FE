@@ -39,7 +39,6 @@ export default function BoothCategoryView({
   );
 
   // 카테고리에 따른 부스 데이터 설정
-
   useEffect(() => {
     if (data && selectedCategory) {
       setBoothDataByCategory(

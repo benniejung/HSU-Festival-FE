@@ -38,6 +38,8 @@ export const MainContentContainer = styled.div`
     right: 0;
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
   `}
 `;
 
@@ -143,10 +145,27 @@ export const ScheduleContainer = styled.div`
   height: 22vh;
   background-color: ${colors.bg_gray_light};
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: ${colors.primary_base};
+  }
 `;
 
 export const ScheduleItem = styled.div`
-  width: 33.5%;
+  width: 100%;
   height: 100%;
 
   border-radius: 12px;
@@ -201,6 +220,8 @@ export const ScheduleTime = styled.div`
 `;
 
 export const ScheduleTitle = styled.div`
+  width: 100%;
+  text-align: center;
   font-size: 13px;
 
   font-weight: 600;
@@ -234,4 +255,67 @@ export const InfoTitle = styled.div`
   line-height: 140%; /* 22.4px */
   letter-spacing: -0.4px;
   color: ${({ $clicked }) => ($clicked ? colors.white : colors.text_secondary)};
+`;
+
+// Modal.jsx
+export const ModalContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 55%;
+  background: ${colors.white};
+`;
+
+export const ModalContent = styled.div`
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const ModalP = styled.p`
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: -0.4px;
+`;
+
+export const ModalTime = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ModalP2 = styled.p`
+  white-space: pre-line;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: -0.4px;
+`;
+
+export const ModalImg = styled.img`
+  width: 100%;
+  height: 40%;
+  background-color: red;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 `;
