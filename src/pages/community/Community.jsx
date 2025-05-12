@@ -41,7 +41,13 @@ export function Community() {
   const handleStartEdit = () => setIsEditing(true);
   const handleChangeNickname = e => setNickname(e.target.value);
   const handleBlur = () => setIsEditing(false);
-  const handleKeyDown = e => { if (e.key === 'Enter') setIsEditing(false); };
+  const handleInputKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // **form의 submit 기본 동작 방지!**
+      if (!isOver && text.trim() !== "") handleSend();
+    }
+  };
+
 
   const isOver = text.length > MAX_LENGTH;
 
@@ -77,7 +83,7 @@ export function Community() {
       client.subscribe("/sub/chat/public", message => {
         const msg = JSON.parse(message.body);
         msg.isMine = msg.senderId === userId;
-        setChattings(prev => [...prev, {type: msg.isMine ? 0 : 1, content: msg.content, date: '00:00' }]);
+        setChattings(prev => [...prev, { type: msg.isMine ? 0 : 1, content: msg.content, date: '00:00' }]);
       });
 
       client.subscribe("/user/queue/errors", message => {
@@ -94,6 +100,7 @@ export function Community() {
       })
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           const reversed = data.reverse().map(msg => ({ ...msg, isMine: msg.senderId === userId }));
           setChattings(reversed);
         });
@@ -123,6 +130,7 @@ export function Community() {
                 onChange={e => setText(e.target.value)}
                 placeholder="메시지를 입력하세요..."
                 maxLength={150}
+                onKeyDown={handleInputKeyDown}
               />
               <Wrap>
                 <NickNameWrap>
@@ -139,9 +147,7 @@ export function Community() {
                     <NickNameText onClick={handleStartEdit}>{nickname}</NickNameText>
                   )}
                 </NickNameWrap>
-                <SendImageWrap onClick={() => {
-                  if (!isOver && text.trim() !== "") handleSend();
-                }}>
+                <SendImageWrap onClick={handleSend}>
                   <SendImage src={send} alt="send" />
                 </SendImageWrap>
               </Wrap>

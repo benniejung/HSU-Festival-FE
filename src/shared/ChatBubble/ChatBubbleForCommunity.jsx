@@ -8,7 +8,23 @@ export function ChatBubbleForCommunity({ type, content, date }) {
       {type === 1 ? (
         <>
           <BugiImgWrap><BugiImg src={bugiImg} /></BugiImgWrap>
-          <Bubble type={type}>{content}</Bubble>
+          <Bubble type={type}>
+            <Content>
+              {content}
+            </Content>
+            <ChatInfo>
+
+              <UserName>
+                username
+              </UserName>
+              <Time>
+                time
+              </Time>
+              
+            </ChatInfo>
+            
+
+          </Bubble>
         </>
       ) : (
         <>
@@ -59,3 +75,22 @@ const BugiImg = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+
+const Content = styled.div`
+`
+
+const ChatInfo = styled.div`
+display: flex;
+gap: 10px;
+font-size: 12px;
+color: #5E5E5E;
+margin-top: 12px;
+`
+
+const UserName = styled.div`
+
+`
+
+const Time = styled.div`
+
+`
