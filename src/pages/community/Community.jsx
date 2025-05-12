@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import ChatContainer from "../../components/Community/ChatContainer";
-import floatingBtnImg from '../../assets/Community/btn_floating_community.svg';
-import send from '../../assets/Chatbot/send_icon.svg';
-import pen from '../../assets/Community/Pen.svg';
-import SockJS from 'sockjs-client/dist/sockjs.js';
-import { Client } from '@stomp/stompjs';
+import floatingBtnImg from "../../assets/Community/btn_floating_community.svg";
+import send from "../../assets/Chatbot/send_icon.svg";
+import pen from "../../assets/Community/Pen.svg";
+import SockJS from "sockjs-client/dist/sockjs.js";
+import { Client } from "@stomp/stompjs";
 
 const MAX_LENGTH = 62;
 
@@ -18,29 +18,27 @@ export function Community() {
   const [text, setText] = useState("");
 
   const getOrSetUserId = () => {
-      let id = localStorage.getItem("user_id");
-      
-      if (!id) {
-        id = crypto.randomUUID();
-        localStorage.setItem("user_id", id);
-        console.log("✅ user_id 생성됨:", id);
-      } else {
-        console.log("✅ user_id 존재:", id);
-      }
-      return id;
-    };
-
+    let id = localStorage.getItem("user_id");
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem("user_id", id);
+      console.log("✅ user_id 생성됨:", id);
+    } else {
+      console.log("✅ user_id 존재:", id);
+    }
+    return id;
+  };
 
   const userId = getOrSetUserId();
 
-  const handleFloatingBtnClick = () => setIsClicked(prev => !prev);
-
+  const handleFloatingBtnClick = () => setIsClicked((prev) => !prev);
   const handleStartEdit = () => setIsEditing(true);
-  const handleChangeNickname = e => setNickname(e.target.value);
+  const handleChangeNickname = (e) => setNickname(e.target.value);
   const handleBlur = () => setIsEditing(false);
+
   const handleInputKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault(); // **form의 submit 기본 동작 방지!**
+    if (e.key === "Enter") {
+      e.preventDefault();
       if (!isOver && text.trim() !== "") handleSend();
     }
   };
@@ -50,95 +48,101 @@ export function Community() {
   const handleSend = () => {
     console.log("🧪 연결 상태:", clientRef.current?.connected);
 
-     if (!clientRef.current?.connected) {
+    if (!clientRef.current?.connected) {
       console.warn("❌ WebSocket 연결 안 됨. 전송 취소됨.");
       return;
     }
 
-
     const payload = {
       username: nickname,
       content: text,
-      userId: userId 
+      userId: userId,
     };
-    
-      console.log("📤 전송 시도 payload:", payload);
-      
-      clientRef.current.publish({
-        destination: "/pub/chat.send",
-        body: JSON.stringify(payload)
-      });
+
+    console.log("📤 전송 시도 payload:", payload);
+
+    clientRef.current.publish({
+      destination: "/pub/chat.send",
+      body: JSON.stringify(payload),
+    });
 
     setText("");
     setIsClicked(false);
   };
 
-  function connect() {
+  const connect = () => {
     const socket = new SockJS(`https://3.34.22.86.nip.io/ws/community?user_id=${userId}`);
     const client = new Client({
       webSocketFactory: () => socket,
       reconnectDelay: 5000,
+      debug: (str) => console.log("💬 STOMP 디버그:", str),
     });
 
     clientRef.current = client;
 
     client.onConnect = () => {
       console.log("✅ WebSocket 연결됨");
-      clientRef.current.connected = true;
 
-      client.subscribe("/sub/chat/public", message => {
-        const msg = JSON.parse(message.body);
-        console.log("📥 수신한 메시지 (raw):", msg);
-        console.log("👤 비교 userId:", userId, "←→", msg.senderId);
+      console.log("📡 구독 시도: /sub/chat/public");
+      client.subscribe("/sub/chat/public", (message) => {
+        console.log("📥 수신한 메시지 (raw):", message.body);
+        try {
+          const msg = JSON.parse(message.body);
+          console.log("👤 비교 userId:", userId, "←→", msg.senderId);
+          const isMine = msg.senderId?.trim() === userId?.trim();
+          console.log("✅ isMine:", isMine);
 
-        const isMine = msg.senderId?.trim() === userId?.trim();
+          setChattings((prev) => [
+            ...prev,
+            {
+              type: isMine ? 0 : 1,
+              content: msg.content,
+              username: msg.username,
+              time: msg.time,
+            },
+          ]);
+        } catch (e) {
+          console.error("❌ 메시지 파싱 실패:", e);
+        }
+      });
 
-        console.log("✅ isMine:", isMine);
-        
-          setChattings(prev => {
-            const updated = [...prev, {
-            type: isMine ? 0 : 1,
-            content: msg.content,
-            username: msg.username,
-            time: msg.time
-          }];
-        
-          console.log("🖼️ 업데이트된 chattings:", updated);
-          return updated;
-        });
+      console.log("📡 구독 완료: /sub/chat/public");
 
-});
-
-
-      client.subscribe("/user/queue/errors", message => {
+      client.subscribe("/user/queue/errors", (message) => {
         try {
           const error = JSON.parse(message.body);
-          alert(`⚠️ ${error.message || '알 수 없는 오류 발생'}`);
+          alert(`⚠️ ${error.message || "알 수 없는 오류 발생"}`);
         } catch (e) {
           console.error("에러 메시지 파싱 실패:", message.body);
         }
       });
 
       fetch(`https://3.34.22.86.nip.io/api/community/chat/messages?user_id=${userId}`, {
-        credentials: "include"
+        credentials: "include",
       })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          const reversed = data.reverse().map(msg => ({ type: msg.senderId === userId ? 0 : 1, content: msg.content, username: msg.username, time: msg.time}));
+        .then((res) => res.json())
+        .then((data) => {
+          const reversed = data.reverse().map((msg) => ({
+            type: msg.senderId === userId ? 0 : 1,
+            content: msg.content,
+            username: msg.username,
+            time: msg.time,
+          }));
           setChattings(reversed);
         });
     };
 
-    client.onStompError = frame => {
-      console.error("WebSocket 연결 실패:", frame);
+    client.onStompError = (frame) => {
+      console.error("❌ WebSocket 연결 실패:", frame);
     };
 
     client.activate();
-  }
+  };
 
   useEffect(() => {
-    connect();
+    if (!clientRef.current) {
+      connect();
+    }
   }, []);
 
   return (
@@ -151,14 +155,16 @@ export function Community() {
             <ChatBubbleWrap>
               <TextInput
                 value={text}
-                onChange={e => setText(e.target.value)}
+                onChange={(e) => setText(e.target.value)}
                 placeholder="메시지를 입력하세요..."
                 maxLength={150}
                 onKeyDown={handleInputKeyDown}
               />
               <Wrap>
                 <NickNameWrap>
-                  <ImageWrap><Image src={pen} alt="pen" /></ImageWrap>
+                  <ImageWrap>
+                    <Image src={pen} alt="pen" />
+                  </ImageWrap>
                   {isEditing ? (
                     <NickNameInput
                       value={nickname}
