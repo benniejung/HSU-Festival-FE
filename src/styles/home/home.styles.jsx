@@ -223,6 +223,7 @@ export const ScheduleTitle = styled.div`
   width: 100%;
   text-align: center;
   font-size: 13px;
+  white-space: pre-line;
 
   font-weight: 600;
   color: ${colors.text_primary};
@@ -249,8 +250,7 @@ export const InfoImg = styled.img`
   // height: auto;
   height: 26px;
   object-fit: contain; // 이미지 비율 유지
-   margin-right: 8px;  // 텍스트와 간격
-
+  margin-right: 8px; // 텍스트와 간격
 `;
 
 export const InfoTitle = styled.div`

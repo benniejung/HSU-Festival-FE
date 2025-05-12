@@ -15,14 +15,35 @@ ${reset}
         --vh: 100%;
         --font-family: 'Noto Sans', sans-serif;
         color-scheme: light only;
+        /* @media (prefers-color-scheme: dark) {
+        body {
+            background-color: ${colors.white};
+            color: ${colors.black};
+        }
+    } */
     }
-        
+      /* 다크모드일 때도 강제로 라이트 유지 */
+/* 다크모드 강제 무시 (보조) */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  input, textarea, select {
+    background-color: white !important;
+    color: black !important;
+  }
+}
     body {
         touch-action: manipulation;
         background-size: 100%;
         background-repeat: repeat;
-       
+        background-color: ${colors.bg_white};
+        color: ${colors.text_primary};
     }
+
+
 
     * {
         box-sizing: border-box;
@@ -36,7 +57,7 @@ ${reset}
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         scroll-behavior: smooth;
         font-size: 62.5%;
-        color-scheme: light only; // 모바일 브라우저에서 라이트 모드로 설정
+        color-scheme: light;
     }
     
     @media screen and (max-width:1799px) {
@@ -44,7 +65,6 @@ ${reset}
         html{
             font-size: 50%;
         }
-        
     }
 
     @media screen and (max-width:1199px) {

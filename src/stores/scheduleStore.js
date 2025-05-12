@@ -57,7 +57,7 @@ export const useScheduleStore = create((set) => ({
         id: 4,
         time: "17:10",
         endTime: "17:30",
-        title: "동아리 공연(브릴란테)",
+        title: "동아리 공연\n(브릴란테)",
         content:
           "🎧 [Setlist]\n" +
           "1. 바람이 지나가는 길 - 이웃집 토토로 OST\n" +
@@ -71,7 +71,7 @@ export const useScheduleStore = create((set) => ({
         id: 5,
         time: "17:30",
         endTime: "18:10",
-        title: "동아리 공연(탈패)",
+        title: "동아리 공연\n(탈패)",
         content: "한성대학교 중앙풍물패 탈패의 공연입니다.",
         status: "대기중",
         imgUrl:
@@ -81,7 +81,7 @@ export const useScheduleStore = create((set) => ({
         id: 6,
         time: "18:10",
         endTime: "18:55",
-        title: "동아리 공연(4호선마이크)",
+        title: "동아리 공연\n(4호선마이크)",
         content: "한성대학교 버스킹동아리 4호선마이크의 공연입니다.",
         status: "대기중",
         imgUrl:
@@ -91,7 +91,7 @@ export const useScheduleStore = create((set) => ({
         id: 7,
         time: "18:55",
         endTime: "19:30",
-        title: "동아리 공연(NOD)",
+        title: "동아리 공연\n(NOD)",
         content:
           "🎧 [Setlist]\n" +
           "1. The Chase & Supersonic - 하츠투하츠 & 프로미스나인\n" +
@@ -119,7 +119,7 @@ export const useScheduleStore = create((set) => ({
         id: 9,
         time: "16:50",
         endTime: "17:35",
-        title: "동아리 공연(TRIAX)",
+        title: "동아리 공연\n(TRIAX)",
         content:
           "🎧 [Setlist]" +
           "한성대학교 흑인음악동아리 트라이엑스(TRIAX)의 공연입니다.",
@@ -131,7 +131,7 @@ export const useScheduleStore = create((set) => ({
         id: 10,
         time: "17:35",
         endTime: "18:20",
-        title: "동아리 공연(왕산악)",
+        title: "동아리 공연\n(왕산악)",
         content:
           "🎸 [Setlist]\n" +
           "1. 새벽별 - 터치드\n" +
@@ -148,7 +148,7 @@ export const useScheduleStore = create((set) => ({
         id: 11,
         time: "18:20",
         endTime: "19:00",
-        title: "동아리 공연(들불)",
+        title: "동아리 공연\n(들불)",
         content:
           "🎸 [Setlist]\n" +
           "1. 잔나비 - 전설\n" +
