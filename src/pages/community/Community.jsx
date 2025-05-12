@@ -45,22 +45,29 @@ export function Community() {
     }
   };
 
-
   const isOver = text.length > MAX_LENGTH;
 
   const handleSend = () => {
-    if (!text.trim()) return;
+    console.log("🧪 연결 상태:", clientRef.current?.connected);
+
+     if (!clientRef.current?.connected) {
+      console.warn("❌ WebSocket 연결 안 됨. 전송 취소됨.");
+      return;
+    }
+
 
     const payload = {
       username: nickname,
       content: text,
       userId: userId 
     };
-
-    clientRef.current?.publish({
-      destination: "/pub/chat.send",
-      body: JSON.stringify(payload)
-    });
+    
+      console.log("📤 전송 시도 payload:", payload);
+      
+      clientRef.current.publish({
+        destination: "/pub/chat.send",
+        body: JSON.stringify(payload)
+      });
 
     setText("");
     setIsClicked(false);
@@ -77,6 +84,7 @@ export function Community() {
 
     client.onConnect = () => {
       console.log("✅ WebSocket 연결됨");
+      clientRef.current.connected = true;
 
       client.subscribe("/sub/chat/public", message => {
         const msg = JSON.parse(message.body);
