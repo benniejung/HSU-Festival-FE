@@ -229,6 +229,7 @@ export const BoothDescription = styled.p`
   font-weight: 400;
   color: ${colors.text_gray};
   margin: 0;
+  // 줄바꿈 방지(길어지면 ...표시)
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

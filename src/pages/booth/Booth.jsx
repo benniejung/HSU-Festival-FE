@@ -43,12 +43,18 @@ export default function Booth() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    console.log(selectedBooth);
+  }, [selectedBooth]);
+
+  useEffect(() => {
+    console.log("selectedMarker", selectedMarker);
+  }, [selectedMarker]);
+
   return (
     <S.BoothLayout>
       <S.FestivalBoothBanner ref={bannerRef}>
-        <S.BoothBannerZoomIcon 
-          src={BoothBannerImgZoom}
-          alt="확대 아이콘" />
+        <S.BoothBannerZoomIcon src={BoothBannerImgZoom} alt="확대 아이콘" />
         <S.FestivalBoothBannerImage
           src={BoothBannerImg}
           alt="festivalMainBanner"
