@@ -82,11 +82,11 @@ export const MarkerImg = styled.img`
 
 export const MarkerText = styled.div`
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 8px;
-  font-weight: 800;
+  font-weight: 00;
   font-family: Pretendard;
   color: ${colors.white};
   text-align: center;
@@ -111,7 +111,7 @@ export const BoothCategoryViewLayout = styled.div`
 export const CategoryListContainer = styled.div`
   display: flex;
   gap: 1.6rem;
-  padding: 1.6rem 0;
+  padding: 1.6rem 0.8rem 0.8rem 0; // top, right, bottom, left
   width: 100%;
   justify-content: center;
   background: ${colors.white};
@@ -122,26 +122,29 @@ export const CategoryListContainer = styled.div`
 `;
 
 export const CategoryItem = styled.div`
+  flex: 1; 
+  max-width: 27%;
+  height: 41px;
   display: flex;
-  width: 80px;
-  height: 32px;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
-  border: 1px solid ${({ selected }) => (selected ? null : colors.border_gray)};
-  background: ${({ selected }) =>
-    selected ? colors.primary_base : colors.white};
+  border: 1px solid ${({ selected }) => (selected ? "transparent" : colors.border_gray)};
+  background: ${({ selected }) => (selected ? colors.primary_base : colors.white)};
   color: ${({ selected }) => (selected ? colors.white : colors.text_gray)};
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 500;
   font-family: Pretendard;
+  white-space: nowrap; // 줄바꿈 방지
+  text-align: center;
 `;
+
 
 export const BoothListContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.3rem;
   padding: 0 1.6rem;
   overflow-y: auto;
   flex: 1;
