@@ -15,6 +15,9 @@ export default function Booth() {
   const bannerRef = useRef(null);
   const contentRef = useRef(null);
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedBooth, setSelectedBooth] = useState(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!bannerRef.current) return;
@@ -64,6 +67,10 @@ export default function Booth() {
           setSelectedCategory={setSelectedCategory}
           selectedMarker={selectedMarker}
           setSelectedMarker={setSelectedMarker}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          selectedBooth={selectedBooth}
+          setSelectedBooth={setSelectedBooth}
         />
       </H.MainContentContainer>
     </S.BoothLayout>

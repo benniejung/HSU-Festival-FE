@@ -8,7 +8,6 @@ const sparkle = keyframes`
   50% { opacity: 1; }
 `;
 
-
 export const HomeLayout = styled.div`
   width: 100%;
   position: relative; // 상대 위치 기준점
@@ -34,9 +33,9 @@ export const FestivalMainBannerImage = styled.img`
 
 export const FestivalMainBannerSparkles = styled.img`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 70%;
+  top: -12px;    // 위로 10px 이동
+  left: -12px;   // 왼쪽으로 12px 이동
+  width: 73%;
   pointer-events: none; // 클릭 방해하지 않게
   animation: ${sparkle} 3s infinite ease-in-out;
 `;
@@ -453,5 +452,3 @@ export const CloseButton = styled.button`
     transform: scale(0.9);
   }
 `;
-
-

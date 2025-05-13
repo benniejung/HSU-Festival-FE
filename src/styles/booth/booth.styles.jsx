@@ -2,22 +2,38 @@ import styled from "styled-components";
 import colors from "../common/colors";
 import { keyframes } from "styled-components";
 
-
 //  radiate (커졌다 작아졌다)
 const radiate = keyframes`
   0% {
-    transform: scale(0.8);
-    opacity: 0.4;
+    transform: scale(0.9);
+    opacity: 0.6;
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.25);
     opacity: 1.0;
   }
   100% {
     transform: scale(0.9);
-    opacity: 0.7;
+    opacity: 0.6;
   }
 `;
+
+// search icon
+export const IconHint = styled.div`
+  position: absolute;
+  right: -2px;   // 우측에서 2px
+  width: 22px;
+  top: 2px;
+  height: 22px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none; // 아이콘 클릭 방해 X
+  }
+`;
+
 
 export const FestivalBoothBanner = styled.div`
   width: 100%;
@@ -86,7 +102,7 @@ export const MarkerText = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 8px;
-  font-weight: 00;
+  font-weight: 900;
   font-family: Pretendard;
   color: ${colors.white};
   text-align: center;
@@ -111,7 +127,7 @@ export const BoothCategoryViewLayout = styled.div`
 export const CategoryListContainer = styled.div`
   display: flex;
   gap: 1.6rem;
-  padding: 1.6rem 0.8rem 0.8rem 0; // top, right, bottom, left
+  padding: 0.8rem 0.8rem 0.5rem 0; // top, right, bottom, left
   width: 100%;
   justify-content: center;
   background: ${colors.white};
@@ -217,6 +233,7 @@ export const BoothDescription = styled.p`
 `;
 
 export const BoothImageBox = styled.div`
+  position: relative; // 아이콘 위치 기준
   width: 80px;
   height: 80px;
   border-radius: 12px;
