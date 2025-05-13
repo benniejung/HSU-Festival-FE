@@ -168,8 +168,8 @@ const TextInputWrap = styled.div`
   width: 100%;
   position: fixed;
   left: 0px;
-  bottom: 100px;
-  padding: 0 8vw;
+  bottom: 80px;
+  padding: 0 4vw;
 `
 
 const TextInput = styled.div`
