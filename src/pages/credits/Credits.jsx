@@ -13,31 +13,31 @@ const developers = [
   {
     name: "임혜정",
     major: "모바일소프트웨어/웹공학 트랙",
-    role: "백엔드, 기획",
+    role: "백엔드(API 개발 및 배포 서버 관리), 기획",
     img: profile1,
   },
   {
     name: "김혜진",
     major: "모바일소프트웨어/웹공학 트랙",
-    role: "백엔드, 기획",
+    role: "백엔드(API 개발 및 DB 관리), 기획",
     img: profile2,
   },
   {
     name: "김건우",
     major: "디지털콘텐츠·가상현실/웹공학 트랙",
-    role: "프론트엔드, 기획",
+    role: "프론트엔드(페이지 제작 및 통신), 기획",
     img: profile3,
   },
   {
     name: "정예빈",
     major: "모바일소프트웨어/웹공학 트랙",
-    role: "프론트엔드, 기획",
+    role: "프론트엔드(페이지 제작 및 통신), 기획",
     img: profile4,
   },
   {
     name: "이지민",
     major: "동양화과/미디어디자인 트랙",
-    role: "디자인",
+    role: "디자인(UX/UI), 기획",
     img: profile5,
   },
 ];

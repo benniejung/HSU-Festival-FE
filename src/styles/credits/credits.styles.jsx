@@ -70,17 +70,18 @@ export const Name = styled.span`
 `;
 
 export const Major = styled.span`
-  font-size: clamp(10px, 1.5vw, 12px);
+  font-size: clamp(8px, 1.1vw, 10px);
   color: ${colors.text_light_gray};
   margin-left: clamp(4px, 1vw, 8px);
 `;
 
 export const Role = styled.div`
   font-family: Pretendard;
-  font-size: clamp(9px, 1.2vw, 10px);
+  font-size: clamp(11px, 1.3vw, 13px);
   font-style: normal;
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+    color: ${colors.text_gray};
+  line-height: 1.8;
 `;
 
 export const Divider = styled.div`
