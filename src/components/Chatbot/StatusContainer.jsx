@@ -60,6 +60,6 @@ const Image = styled.img`
   position: absolute;
   bottom: 20px;
   right: 30px;
-  width: 180px;
+  width: 150px;
   height: auto;
 `;
