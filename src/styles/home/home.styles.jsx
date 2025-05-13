@@ -393,10 +393,10 @@ export const ModalContent = styled.div`
 
 export const ModalImgContainer = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 34vh;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
-  background-color: ${colors.bg_gray_light};
+  background-color: ${colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
