@@ -353,10 +353,10 @@ export const ModalContainer = styled.div`
   background: ${colors.white};
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
   z-index: 1000;
-  max-height: 80%;
-  overflow-y: auto;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 
   animation: fadeInModal 0.25s ease-out forwards;
 
@@ -377,10 +377,16 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
   overflow-y: auto;
   flex: 1;
+  min-height: 0;
+  max-height: calc(90vh - 30vh - 48px);
+
+  @media (max-height: 600px) {
+    max-height: calc(90vh - 25vh - 48px);
+  }
 `;
 
 export const ModalImgContainer = styled.div`
