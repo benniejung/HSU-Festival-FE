@@ -8,7 +8,7 @@ export function ChatContainer({ status, setStatus }) {
     const [chattings, setChattings] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const chatWrapRef = useRef(null);
-    const {post, loading, error} = usePost('/chatMessage')
+    const { post, loading, error } = usePost('/chatMessage')
 
     const handleSend = async () => {
         if (inputValue.trim() === "") return;
@@ -20,37 +20,51 @@ export function ChatContainer({ status, setStatus }) {
         };
 
         setChattings(prev => [...prev, newChat]);
+
         setInputValue("");
+
+        const aiLoadingIndex = chattings.length + 1; // 추가 예정 위치(아래서 최종 교체 용도)
+        setChattings(prev => [...prev, {
+            type: 2,
+            content: '...',
+            date: '00:00'
+        }]);
         try {
             const result = await post({
                 newChat: inputValue,
                 chatHistory: chattings,
             });
-    
+            console.log(result)
             // 정상 응답 처리
             setStatus(0);
-    
-            const newAIChat = {
-                type: 1,
-                content: result.data.content,
-                date: result.data.date,
-            };
-    
-            setChattings(prev => [...prev, newAIChat]);
-    
+
+            setChattings(prev => {
+                // prev의 마지막(로딩) AI를 교체
+                // (혹시 여러개 추가될 가능성도 있으니 제일 마지막만 교체)
+                const newArr = [...prev];
+                newArr[newArr.length - 1] = {
+                    type: 1,
+                    content: result.data.content,
+                    date: result.data.date,
+                };
+                return newArr;
+            });
+
         } catch (err) {
             console.error("Error while sending message:", err.response.data.code);
             setStatus(2); // 예: 비속어 감지 or 기타 에러 시 상태 코드
-    
-            // 에러 메시지를 사용자에게 보여주고 싶다면:
-            const errorChat = {
-                type: 1,
-                content: "죄송해요. 대화에 부적절한 단어가 포함되었어요.",
-                date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            };
-            setChattings(prev => [...prev, errorChat]);
+            setChattings(prev => {
+                // 로딩이라도 지우고 에러메시지로 교체
+                const newArr = [...prev];
+                newArr[newArr.length - 1] = {
+                    type: 1,
+                    content: "죄송해요. 대화에 부적절한 단어가 포함되었어요.",
+                    date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                };
+                return newArr;
+            });
         }
-        
+
     };
 
     const handleKeyDown = (e) => {
