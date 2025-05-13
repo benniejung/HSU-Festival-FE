@@ -31,7 +31,6 @@ export default function BoothCategoryView({
     setShowModal(true);
   };
 
-
   const categoryTypeMap = {
     체험부스: "ACTIVITY",
     푸드트럭: "FOOD",

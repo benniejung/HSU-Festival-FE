@@ -14,14 +14,14 @@ const radiate = keyframes`
   }
   100% {
     transform: scale(0.9);
-    opacity: 0.7;
+    opacity: 0.6;
   }
 `;
 
 // search icon
 export const IconHint = styled.div`
   position: absolute;
-  right: -2px;   // 우측에서 2px
+  right: -2px; // 우측에서 2px
   width: 22px;
   top: 2px;
   height: 22px;
@@ -33,7 +33,6 @@ export const IconHint = styled.div`
     pointer-events: none; // 아이콘 클릭 방해 X
   }
 `;
-
 
 export const FestivalBoothBanner = styled.div`
   width: 100%;
@@ -238,6 +237,7 @@ export const BoothDescription = styled.p`
 `;
 
 export const BoothImageBox = styled.div`
+  position: relative;
   width: 80px;
   height: 80px;
   border-radius: 12px;
