@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import bubble_user from '../../assets/Chatbot/bubble_user.svg';
 import bubble_ai from '../../assets/Chatbot/bubble_ai.svg';
+import Loader from "../Loader/Loader";
 
 export function ChatBubble({ type, content, date }) {
   return (
@@ -11,6 +12,12 @@ export function ChatBubble({ type, content, date }) {
           <Date>{date}</Date>
           <Bubble type={type}>{content}</Bubble>
         </>
+      )  : type === 2 ? (        
+        
+        
+          <Loader />
+        
+        
       ) : (
         <>
           <Bubble type={type}>{content}</Bubble>
@@ -50,3 +57,8 @@ const Bubble = styled.div`
   word-break: break-word;
   white-space: pre-wrap;
 `;
+
+const Loading = styled.div`
+font-size: 20px;
+font-weight: 600;
+`
