@@ -4,8 +4,8 @@ import React from "react";
 import * as S from "../../styles/booth/booth.styles";
 import SearchIcon from "../../assets/home/search.png";
 
-
 export default function BoothItem({
+  id,
   booth,
   selectedMarker,
   setSelectedMarker,
@@ -22,6 +22,7 @@ export default function BoothItem({
 
   return (
     <S.BoothItemRow
+      id={id}
       selected={selectedMarker === booth.boothNum}
       onClick={handleClick} // ✅ marker만 설정
     >
@@ -38,13 +39,16 @@ export default function BoothItem({
       </S.BoothTextCol>
       <S.BoothImageBox onClick={handleImageClick}>
         <S.BoothImage
-          src={booth.imageUrl || 
-            "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/186fb3b2-2756-40d1-8580-ab50299217dd.png"}
+          src={
+            booth.imageUrl ||
+            "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/186fb3b2-2756-40d1-8580-ab50299217dd.png"
+          }
           alt={booth.name}
         />
         <S.IconHint>
           <img src={SearchIcon} alt="상세 보기" />
-        </S.IconHint>      </S.BoothImageBox>
+        </S.IconHint>{" "}
+      </S.BoothImageBox>
     </S.BoothItemRow>
   );
 }

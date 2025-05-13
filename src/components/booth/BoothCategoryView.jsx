@@ -31,6 +31,16 @@ export default function BoothCategoryView({
     setShowModal(true);
   };
 
+  // 마커 선택 시 해당 부스로 스크롤
+  useEffect(() => {
+    if (selectedMarker) {
+      const boothElement = document.getElementById(`booth-${selectedMarker}`);
+      if (boothElement) {
+        boothElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }, [selectedMarker]);
+
   const categoryTypeMap = {
     체험부스: "ACTIVITY",
     푸드트럭: "FOOD",
@@ -84,6 +94,7 @@ export default function BoothCategoryView({
         {boothData.map((booth) => (
           <BoothItem
             key={booth.id}
+            id={`booth-${booth.boothNum}`} // 스크롤 위해 추가
             booth={booth}
             selectedMarker={selectedMarker}
             setSelectedMarker={setSelectedMarker}
