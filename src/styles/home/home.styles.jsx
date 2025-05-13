@@ -43,7 +43,7 @@ export const FestivalMainBannerSparkles = styled.img`
 export const MainContentContainer = styled.div`
   width: 100%;
   margin-top: -10px; // 위쪽 바깥 여백 줄이기
-  padding: 30px;
+  padding: 23px;
   background: ${colors.white};
   transition: all 0.3s ease-in-out;
 
@@ -174,7 +174,7 @@ export const DayText = styled.p`
 // 타임테이블 컨테이너
 export const ScheduleContainer = styled.div`
   width: 100%;
-  height: 20vh;
+  height: 23vh;
   border-radius: 10px;
 
   background-color: ${colors.bg_gray_light};

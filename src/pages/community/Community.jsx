@@ -216,15 +216,15 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-gap: 40px;
+gap: 20px;
 `
 
 const LoadingAnime = styled.div`
 
 `
 const LoadingText = styled.div`
-font-weight: 500;
-font-size: 24px;
+font-weight: 400;
+font-size: 18px;
 `
 
 const FloatingBtnWrap = styled.div`

@@ -28,7 +28,7 @@ const Ball = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${colors.primary_dark};
+  background: ${colors.text_gray};
   animation: ${bounce} 1s alternate infinite;
   transition: 0.5s linear;
 
