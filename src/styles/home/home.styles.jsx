@@ -347,16 +347,29 @@ export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.96);
   width: 85%;
   max-width: 420px;
   background: ${colors.white};
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
   z-index: 1000;
-  max-height: 80vh;
-  display: flex;
-  flex-direction: column;
+  max-height: 80%;
+  overflow-y: auto;
+
+  animation: fadeInModal 0.25s ease-out forwards;
+
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -374,6 +387,7 @@ export const ModalImgContainer = styled.div`
   width: 100%;
   height: 30vh;
   aspect-ratio: 4 / 3;
+  border-radius: 20px;
   background-color: ${colors.bg_gray_light};
   display: flex;
   align-items: center;
