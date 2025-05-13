@@ -33,8 +33,8 @@ export const FestivalMainBannerImage = styled.img`
 
 export const FestivalMainBannerSparkles = styled.img`
   position: absolute;
-  top: -12px;    // 위로 10px 이동
-  left: -12px;   // 왼쪽으로 12px 이동
+  top: -12px; // 위로 10px 이동
+  left: -12px; // 왼쪽으로 12px 이동
   width: 73%;
   pointer-events: none; // 클릭 방해하지 않게
   animation: ${sparkle} 3s infinite ease-in-out;
@@ -60,14 +60,12 @@ export const MainContentContainer = styled.div`
   `}
 `;
 
-
 // 위아래로 떠다니는 애니메이션 정의
 const float = keyframes`
   0% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 `;
-
 
 export const ChatbotButton = styled.button`
   position: fixed;
@@ -137,7 +135,6 @@ export const DateSelector = styled.div`
   position: relative;
   overflow: hidden;
 `;
-
 
 export const DateButton = styled.button`
   flex: 1;
@@ -214,7 +211,6 @@ export const ScheduleItem = styled.div`
   min-height: 18vh; // 항목 간 높이 통일
   align-items: center;
   gap: 0.9vh;
-  
 `;
 
 // 타임테이블 상세보기 아이콘
@@ -246,9 +242,9 @@ export const ScheduleStatus = styled.div`
   color: #555;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  
+
   &:active {
-    background-color: #469AF6;
+    background-color: #469af6;
     color: white;
     transform: scale(0.96);
   }
@@ -327,7 +323,6 @@ export const InfoTitle = styled.div`
   color: ${({ $clicked }) => ($clicked ? colors.white : colors.text_secondary)};
 `;
 
-
 // Modal.jsx
 export const Overlay = styled.div`
   position: fixed;
@@ -348,34 +343,21 @@ export const Overlay = styled.div`
   }
 `;
 
-
 export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.96);
+  transform: translate(-50%, -50%);
   width: 85%;
   max-width: 420px;
   background: ${colors.white};
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
   z-index: 1000;
-
-  animation: fadeInModal 0.25s ease-out forwards;
-
-  @keyframes fadeInModal {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 `;
-
 
 export const ModalContent = styled.div`
   padding: 24px 20px 20px;
@@ -384,10 +366,13 @@ export const ModalContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
+  overflow-y: auto;
+  flex: 1;
 `;
 
 export const ModalImgContainer = styled.div`
   width: 100%;
+  height: 30vh;
   aspect-ratio: 4 / 3;
   background-color: ${colors.bg_gray_light};
   display: flex;
@@ -442,6 +427,7 @@ export const CloseButton = styled.button`
   color: ${colors.gray};
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 1001;
 
   &:hover {
     color: ${colors.primary_base};
