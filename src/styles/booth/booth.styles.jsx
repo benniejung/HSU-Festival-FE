@@ -138,7 +138,7 @@ export const CategoryListContainer = styled.div`
 export const CategoryItem = styled.div`
   flex: 1;
   max-width: 27%;
-  height: 41px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;

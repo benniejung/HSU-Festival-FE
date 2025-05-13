@@ -42,6 +42,7 @@ export const FestivalMainBannerSparkles = styled.img`
 
 export const MainContentContainer = styled.div`
   width: 100%;
+  margin-top: -10px; // 위쪽 바깥 여백 줄이기
   padding: 20px;
   background: ${colors.white};
   transition: all 0.3s ease-in-out;
@@ -354,7 +355,7 @@ export const ModalContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  max-height: 80vh;
+  max-height: 65vh;
   display: flex;
   flex-direction: column;
 
@@ -381,6 +382,7 @@ export const ModalContent = styled.div`
   gap: 4px;
   overflow-y: auto;
   flex: 1;
+
   min-height: 0;
   max-height: calc(90vh - 30vh - 48px);
 
@@ -391,7 +393,7 @@ export const ModalContent = styled.div`
 
 export const ModalImgContainer = styled.div`
   width: 100%;
-  height: 30vh;
+  height: 40vh;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
   background-color: ${colors.bg_gray_light};
@@ -408,7 +410,7 @@ export const ModalImg = styled.img`
 `;
 
 export const ModalP = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: ${colors.text_strong};
   text-align: center;
@@ -430,7 +432,7 @@ export const ModalTime = styled.div`
 export const ModalP2 = styled.p`
   text-align: center;
   white-space: pre-line;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.6;
   color: ${colors.text_default};
