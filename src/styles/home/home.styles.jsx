@@ -277,6 +277,8 @@ export const ModalContent = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 4px;
 `;
 
@@ -306,6 +308,7 @@ export const ModalTime = styled.div`
 `;
 
 export const ModalP2 = styled.p`
+  text-align: center;
   white-space: pre-line;
   font-size: 16px;
   font-weight: 600;

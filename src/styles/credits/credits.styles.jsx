@@ -14,6 +14,7 @@ export const Title = styled.h2`
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.375px;
+  margin-bottom: clamp(16px, 2vh, 24px);
 `;
 
 export const List = styled.div`

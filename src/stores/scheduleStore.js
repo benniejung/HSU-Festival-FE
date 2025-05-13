@@ -31,10 +31,10 @@ export const useScheduleStore = create((set) => ({
         title: "제 47회 낙산가요제",
         content:
           "🎧 [참가자]\n" +
-          "블랙홀(그라찌에)\n" +
-          "R'adios(SuferZ)\n" +
-          "트로피칼(노바나 프로젝트)\n" +
-          "SAVE AS(남궁혜성)\n" +
+          "1. 블랙홀(그라찌에)\n" +
+          "2. R'adios(SuferZ)\n" +
+          "3. 트로피칼(노바나 프로젝트)\n" +
+          "4. SAVE AS(남궁혜성)\n" +
           "의심스러운 사랑(남청)\n" +
           "총(아나하)",
         status: "대기중",
