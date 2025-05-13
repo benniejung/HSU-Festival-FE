@@ -88,6 +88,7 @@ export default function BoothCategoryView({
             selectedMarker={selectedMarker}
             setSelectedMarker={setSelectedMarker}
             onOpenModal={handleOpenModal} // 여기 넘겨줘야 함
+            selectedBooth={selectedBooth}
           />
         ))}
       </S.BoothListContainer>

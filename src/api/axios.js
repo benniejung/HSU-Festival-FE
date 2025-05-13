@@ -5,6 +5,7 @@ export const API = axios.create({
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
+    Accept: "appLication/json", // 이 줄 추가
   },
   withCredentials: false,
 });
