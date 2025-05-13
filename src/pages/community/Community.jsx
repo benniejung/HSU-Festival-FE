@@ -216,7 +216,7 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-gap: 20px;
+gap: 40px;
 `
 
 const LoadingAnime = styled.div`

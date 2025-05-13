@@ -1,10 +1,11 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import colors from "../../styles/common/colors";
 
 // 애니메이션 정의
 const bounce = keyframes`
   from {
-    transform: scale(2);
+    transform: scale(1.6);
   }
   to {
     transform: scale(1);
@@ -24,10 +25,10 @@ const LoaderWrapper = styled.div`
 `;
 
 const Ball = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: black;
+  background: ${colors.primary_dark};
   animation: ${bounce} 1s alternate infinite;
   transition: 0.5s linear;
 
