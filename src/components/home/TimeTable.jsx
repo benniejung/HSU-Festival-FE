@@ -59,7 +59,7 @@ export default function TimeTable() {
       </S.DateSelector>
       <S.ScheduleContainer>
         {loading ? (
-          <S.LoadingText>일정을 불러오는 중...</S.LoadingText>
+          <S.LoadingText>일정 불러오는 중...</S.LoadingText>
         ) : (
           <Swiper
             modules={[Pagination]}

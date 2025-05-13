@@ -43,7 +43,7 @@ export const FestivalMainBannerSparkles = styled.img`
 export const MainContentContainer = styled.div`
   width: 100%;
   margin-top: -10px; // 위쪽 바깥 여백 줄이기
-  padding: 20px;
+  padding: 30px;
   background: ${colors.white};
   transition: all 0.3s ease-in-out;
 
@@ -104,30 +104,30 @@ export const ChatbotButton = styled.button`
 export const InfoCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   margin-top: 2vh;
 `;
 
 // TimeTable.jsx
 export const TimeTableLayout = styled.div`
   width: 100%;
-  min-height: 28.22vh; // 최소 높이 보장
+  min-height: 30vh; // 최소 높이 보장
   /* height: calc(
     100vh - 8vh - 4vw
   ); // 전체 높이에서 바텀 네비(8vh)와 패딩(2vw * 2) 제외
   max-height: calc(100vh - 8vh - 4vw); */
   display: flex;
   flex-direction: column;
-  gap: 2.2vh;
+  gap: 3vh;
   align-items: center;
 `;
 
 // 요일 바
 export const DateSelector = styled.div`
-  width: 70%;
+  width: 66%;
   height: 42px;
-  padding: 4px;
-  border-radius: 34px;
+  padding: 3px;
+  border-radius: 38px;
   border: 1px solid #ececec;
   background: ${colors.white};
   display: flex;
