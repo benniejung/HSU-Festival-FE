@@ -18,10 +18,13 @@ export const Title = styled.h2`
 `;
 
 export const List = styled.div`
+  margin-top: clamp(2vh, 3vh, 4vh);
+
   width: 100%;
   height: calc(100vh - 8vh);
   display: flex;
   flex-direction: column;
+
   gap: clamp(24px, 4vh, 32px);
   margin-left: clamp(8px, 2vw, 10px);
   overflow-y: auto;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import bugiImg from '../../assets/Community/bugi_profile.svg'
+
+import bugiImg from '../../assets/Community/bugi_profile1.png'
 import Loader from "../Loader/Loader.jsx";
 
 export function ChatBubbleForCommunity({ type, content, date, username, }) {
@@ -74,7 +75,7 @@ const BugiImgWrap = styled.div`
 `;
 
 const BugiImg = styled.img`
-  width: 100%;
+  width: 45px;
   height: 100%;
   object-fit: cover;
 `;

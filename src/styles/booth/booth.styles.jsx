@@ -1,5 +1,52 @@
 import styled from "styled-components";
 import colors from "../common/colors";
+import { keyframes } from "styled-components";
+
+
+//  radiate (커졌다 작아졌다)
+const radiate = keyframes`
+  0% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1.0;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+`;
+
+export const FestivalBoothBanner = styled.div`
+  width: 100%;
+  height: auto;
+  position: relative; // glow가 이 기준으로 겹쳐짐
+  
+`;
+
+export const FestivalBoothBannerImage = styled.img`
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  @media (max-width: 390px) {
+    height: calc(229px * (100vw / 390));
+  }
+`;
+
+export const BoothBannerZoomIcon = styled.img`
+  position: absolute;
+  top: 0.6%;
+  right: 20%;
+  width: 80%;
+  pointer-events: none;
+  animation: ${radiate} 2.5s ease-in-out infinite;
+  z-index: 5;
+`;
 
 export const BoothLayout = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import normal from '../../assets/Chatbot/부기_평온.svg'
-import error from '../../assets/Chatbot/부기_난처.svg'
+import normal from '../../assets/Chatbot/부기_평온.png'
+import error from '../../assets/Chatbot/부기_난처.png'
 
 export function StatusContainer({ status }) {
 
@@ -52,6 +52,8 @@ position: absolute;
   letter-spacing: 3.5%;
   text-align: left;
   color: white;
+  font-family: "Gmarket Sans";
+  font-style: normal;
 `;
 
 const Image = styled.img`

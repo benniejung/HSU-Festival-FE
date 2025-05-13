@@ -28,7 +28,7 @@ export const useScheduleStore = create((set) => ({
         id: 2,
         time: "16:00",
         endTime: "19:00",
-        title: "제 47회 낙산가요제",
+        title: "낙산가요제",
         content:
           "🎧 [참가자]\n" +
           "1. 블랙홀(그라찌에)\n" +
@@ -57,7 +57,7 @@ export const useScheduleStore = create((set) => ({
         id: 4,
         time: "17:10",
         endTime: "17:30",
-        title: "동아리 공연\n(브릴란테)",
+        title: "브릴란테 공연",
         content:
           "🎧 [Setlist]\n" +
           "1. 바람이 지나가는 길 - 이웃집 토토로 OST\n" +
@@ -71,7 +71,7 @@ export const useScheduleStore = create((set) => ({
         id: 5,
         time: "17:30",
         endTime: "18:10",
-        title: "동아리 공연\n(탈패)",
+        title: "탈패 공연",
         content: "한성대학교 중앙풍물패 탈패의 공연입니다.",
         status: "대기중",
         imgUrl:
@@ -81,7 +81,7 @@ export const useScheduleStore = create((set) => ({
         id: 6,
         time: "18:10",
         endTime: "18:55",
-        title: "동아리 공연\n(4호선마이크)",
+        title: "4호선마이크 공연",
         content: "한성대학교 버스킹동아리 4호선마이크의 공연입니다.",
         status: "대기중",
         imgUrl:
@@ -91,7 +91,7 @@ export const useScheduleStore = create((set) => ({
         id: 7,
         time: "18:55",
         endTime: "19:30",
-        title: "동아리 공연\n(NOD)",
+        title: "NOD 공연",
         content:
           "🎧 [Setlist]\n" +
           "1. The Chase & Supersonic - 하츠투하츠 & 프로미스나인\n" +
@@ -119,10 +119,15 @@ export const useScheduleStore = create((set) => ({
         id: 9,
         time: "16:50",
         endTime: "17:35",
-        title: "동아리 공연\n(TRIAX)",
-        content:
-          "🎧 [Setlist]" +
-          "한성대학교 흑인음악동아리 트라이엑스(TRIAX)의 공연입니다.",
+        title: "TRIAX 공연",
+        content: `한성대학교 흑인음악동아리 트라이엑스(TRIAX)의 공연입니다.
+        🎧 [Setlist]
+        01 DNA Remix | 02 TNG
+        03 Flawless | 04 Clean up Squad
+        05 Guarantee1 | 06 Guarantee2
+        07 dash | 08 사임사임
+        09 NO FEAR | 10 범퍼카
+        `,
         status: "대기중",
         imgUrl:
           "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-12/90dc6e36-5653-4e2d-9d9c-eed310feeb63.jpg",
@@ -131,7 +136,7 @@ export const useScheduleStore = create((set) => ({
         id: 10,
         time: "17:35",
         endTime: "18:20",
-        title: "동아리 공연\n(왕산악)",
+        title: "왕산악 공연",
         content:
           "🎸 [Setlist]\n" +
           "1. 새벽별 - 터치드\n" +
@@ -148,7 +153,7 @@ export const useScheduleStore = create((set) => ({
         id: 11,
         time: "18:20",
         endTime: "19:00",
-        title: "동아리 공연\n(들불)",
+        title: "들불 공연",
         content:
           "🎸 [Setlist]\n" +
           "1. 잔나비 - 전설\n" +

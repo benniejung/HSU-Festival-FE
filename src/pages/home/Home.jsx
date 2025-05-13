@@ -6,6 +6,7 @@ import InfoCard from "../../components/home/InfoCard";
 
 // images
 import FESTIVALMAINBANNER from "../../assets/home/main-banner.png";
+import FESTIVALMAINBANNERSPARKLES from "../../assets/home/sparkles.png";
 import NOTIFYINFO from "../../assets/home/notify-info.png";
 import SITEINFO from "../../assets/home/site-info.png";
 import CHATBOT from "../../assets/home/chatbot.png";
@@ -22,6 +23,10 @@ export default function Home() {
         <S.FestivalMainBannerImage
           src={FESTIVALMAINBANNER}
           alt="festivalMainBanner"
+        />
+        <S.FestivalMainBannerSparkles
+          src={FESTIVALMAINBANNERSPARKLES}
+          alt="sparkles"
         />
       </S.FestivalMainBanner>
       <S.MainContentContainer>

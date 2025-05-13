@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import * as S from "../../styles/notice/notice.styles";
 import NoticeItem from "../../components/notice/NoticeItem";
 import NoticeHeader from "../../components/notice/NoticeHeader";
@@ -6,17 +6,11 @@ import NoticeHeader from "../../components/notice/NoticeHeader";
 // hooks
 import useGet from "../../hooks/useGet";
 
-// store
-import { useNoticeStore } from "../../stores/noticeStore";
-
 export default function Notice() {
-  //const { data, loading, error } = useGet("/notice");
-  const { notices, setNotices } = useNoticeStore();
-  const [loading, setLoading] = useState(false);
-  /*   useEffect(() => {
-    setNotices(data);
-    console.log(data);
-  }, [data]); */
+  const { data, loading, error } = useGet("/notice");
+
+  // null 안전 처리 (데이터 구조에 따라 수정 가능)
+  const notices = data?.data ?? [];
 
   return (
     <S.NoticeLayout>

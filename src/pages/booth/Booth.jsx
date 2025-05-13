@@ -3,7 +3,8 @@ import * as S from "../../styles/booth/booth.styles";
 import * as H from "../../styles/home/home.styles";
 
 // images
-import BoothBannerImg from "../../assets/booth/booth-banner.svg";
+import BoothBannerImg from "../../assets/booth/booth-banner.png";
+import BoothBannerImgZoom from "../../assets/booth/zoom.png";
 import BoothMap from "../../components/booth/BoothMap";
 import BoothCategoryView from "../../components/booth/BoothCategoryView";
 
@@ -41,12 +42,15 @@ export default function Booth() {
 
   return (
     <S.BoothLayout>
-      <H.FestivalMainBanner ref={bannerRef}>
-        <H.FestivalMainBannerImage
+      <S.FestivalBoothBanner ref={bannerRef}>
+        <S.BoothBannerZoomIcon 
+          src={BoothBannerImgZoom}
+          alt="확대 아이콘" />
+        <S.FestivalBoothBannerImage
           src={BoothBannerImg}
           alt="festivalMainBanner"
         />
-      </H.FestivalMainBanner>
+      </S.FestivalBoothBanner>
       <H.MainContentContainer ref={contentRef} $isFixed={isFixed}>
         {/* 지도 뷰 */}
         <BoothMap

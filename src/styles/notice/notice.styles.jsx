@@ -28,7 +28,7 @@ export const BackButton = styled.button`
 
 export const NoticeTitle = styled.h2`
   margin: 0 auto;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 20px; /* 100% */
   letter-spacing: 0.7px;
@@ -43,7 +43,7 @@ export const NoticeTitle = styled.h2`
 
 export const NoticeCount = styled.div`
   margin-top: 3vh;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   color: #888;
 
   span {
@@ -93,23 +93,35 @@ export const NoticeItemContainer = styled.div`
   gap: 8px;
   width: 100%;
   height: 14vh;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   border-radius: 15px;
   background: ${colors.white};
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+  color: #222; // 기본 글자 색
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   padding: 19px;
+  transition: all 0.15s ease-in-out;
+
+  &:active {
+    background-color: #469AF6;
+    color: white;
+
+    * {
+      color: white; // 자식 요소에도 적용되도록
+    }
+  }
 `;
 
+
 export const NoticeItemTitle = styled.div`
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #222;
+  line-height: 1.5; 
 `;
 
 export const NoticeItemDate = styled.div`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #888;
 `;
 
@@ -121,23 +133,24 @@ export const DetailLayout = styled.div`
 `;
 
 export const DetailTitle = styled.h2`
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
   color: #222;
   margin-bottom: 8px;
   margin-top: 6vh;
+  line-height: 1.4;
 `;
 
 export const DetailDate = styled.div`
   color: #bdbdbd;
-  font-size: 12px;
-  margin-bottom: 24px;
+  font-size: 14px;
+  margin-bottom: 16px;
 `;
 
 export const DetailDivider = styled.hr`
   border: none;
   border-top: 1px solid #e0e0e0;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 `;
 
 export const DetailContent = styled.div`
@@ -145,4 +158,5 @@ export const DetailContent = styled.div`
   font-size: 15px;
   line-height: 1.7;
   margin-bottom: 40px;
+  white-space: pre-line;
 `;
