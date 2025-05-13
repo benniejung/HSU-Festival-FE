@@ -80,6 +80,12 @@ const promotionMarkers = [
     left: "53%",
     top: "28%",
   },
+  {
+    id: 2,
+    left: "38%",
+    top: "25%",
+  },
+  { id: 3, left: "19%", top: "10%" },
 ];
 
 export { activityMarkers, foodTruckMarkers, promotionMarkers };
