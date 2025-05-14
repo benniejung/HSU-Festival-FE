@@ -346,7 +346,7 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.div`
   position: fixed;
-  top: 47%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.96);
   width: 85%;
@@ -355,7 +355,7 @@ export const ModalContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  max-height: 70vh;
+  max-height: 65vh;
   display: flex;
   flex-direction: column;
 
@@ -393,7 +393,7 @@ export const ModalContent = styled.div`
 
 export const ModalImgContainer = styled.div`
   width: 100%;
-  height: 54vh;
+  height: 44vh;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
   background-color: ${colors.white};
