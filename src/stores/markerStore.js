@@ -43,32 +43,32 @@ const activityMarkers = [
 const foodTruckMarkers = [
   {
     id: "1",
-    left: "63%",
+    left: "61%",
     top: "22%",
   },
   {
     id: "2",
-    left: "69%",
+    left: "66%",
     top: "22%",
   },
   {
     id: "3",
-    left: "75%",
+    left: "71%",
     top: "22%",
   },
   {
     id: "4",
+    left: "76%",
+    top: "22%",
+  },
+  {
+    id: "5",
     left: "63%",
     top: "62%",
   },
   {
-    id: "5",
-    left: "69%",
-    top: "62%",
-  },
-  {
     id: "6",
-    left: "75%",
+    left: "69%",
     top: "62%",
   },
 ];
