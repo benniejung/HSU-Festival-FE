@@ -15,6 +15,8 @@ export const NoticeHeader = styled.div`
   height: 48px;
 `;
 
+export const NoticeItemPined = styled.div``;
+
 export const BackButton = styled.button`
   position: absolute;
   left: 0;
@@ -92,7 +94,7 @@ export const NoticeItemContainer = styled.div`
   flex-direction: column;
   gap: 8px;
   width: 100%;
-  height: 14vh;
+
   justify-content: center;
   align-items: flex-start;
   border-radius: 15px;
@@ -103,7 +105,7 @@ export const NoticeItemContainer = styled.div`
   transition: all 0.15s ease-in-out;
 
   &:active {
-    background-color: #469AF6;
+    background-color: #469af6;
     color: white;
 
     * {
@@ -112,12 +114,11 @@ export const NoticeItemContainer = styled.div`
   }
 `;
 
-
 export const NoticeItemTitle = styled.div`
   font-size: 1.9rem;
   font-weight: 700;
   color: #222;
-  line-height: 1.5; 
+  line-height: 1.5;
 `;
 
 export const NoticeItemDate = styled.div`

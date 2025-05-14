@@ -17,5 +17,4 @@ export default function ScheduleItem({ schedule, onClick }) {
       <S.ScheduleTitle>{title}</S.ScheduleTitle>
     </S.ScheduleItem>
   );
-  
 }

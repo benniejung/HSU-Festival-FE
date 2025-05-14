@@ -250,6 +250,8 @@ export const ScheduleStatus = styled.div`
     transform: scale(0.96);
   }
 
+  font-size: 11px;
+
   ${({ $status }) => {
     switch ($status) {
       case "진행 중":
