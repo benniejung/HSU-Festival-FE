@@ -250,8 +250,6 @@ export const ScheduleStatus = styled.div`
     transform: scale(0.96);
   }
 
-  font-size: 11px;
-
   ${({ $status }) => {
     switch ($status) {
       case "진행 중":
@@ -348,7 +346,7 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.div`
   position: fixed;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.96);
   width: 85%;
@@ -357,7 +355,7 @@ export const ModalContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  max-height: 65vh;
+  max-height: 70vh;
   display: flex;
   flex-direction: column;
 
@@ -395,7 +393,7 @@ export const ModalContent = styled.div`
 
 export const ModalImgContainer = styled.div`
   width: 100%;
-  height: 34vh;
+  height: 54vh;
   aspect-ratio: 4 / 3;
   border-radius: 20px;
   background-color: ${colors.white};
