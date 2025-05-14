@@ -223,8 +223,8 @@ const LoadingAnime = styled.div`
 
 `
 const LoadingText = styled.div`
-font-weight: 500;
-font-size: 24px;
+font-weight: 400;
+font-size: 18px;
 `
 
 const FloatingBtnWrap = styled.div`
