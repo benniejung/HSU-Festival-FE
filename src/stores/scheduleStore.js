@@ -194,8 +194,8 @@ export const useScheduleStore = create((set) => ({
   updateScheduleStatus: (schedules, selectedDate) => {
     const now = new Date();
     const currentMonth = now.getMonth() + 1;
-    const currentDate = now.getDate() - 1;
-    const currentHour = now.getHours() + 18;
+    const currentDate = now.getDate();
+    const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
     const currentTime = currentHour * 60 + currentMinute; // 분 단위로 변환
 
