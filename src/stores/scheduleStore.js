@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useScheduleStore = create((set) => ({
-  selectedDate: "5.14",
+  selectedDate: "5.15",
   schedules: [],
   loading: false,
   error: null,
@@ -23,7 +23,7 @@ export const useScheduleStore = create((set) => ({
         status: "대기중",
         imgUrl:
           "https://hsu-festival-bucket.s3.ap-northeast-2.amazonaws.com/form/2025-05-13/5a7272f2-6c02-4572-99b4-e2705222a1bc.png",
-        },
+      },
       {
         id: 2,
         time: "16:00",
@@ -194,8 +194,8 @@ export const useScheduleStore = create((set) => ({
   updateScheduleStatus: (schedules, selectedDate) => {
     const now = new Date();
     const currentMonth = now.getMonth() + 1;
-    const currentDate = now.getDate() -1;
-    const currentHour = now.getHours() +18;
+    const currentDate = now.getDate() - 1;
+    const currentHour = now.getHours() + 18;
     const currentMinute = now.getMinutes();
     const currentTime = currentHour * 60 + currentMinute; // 분 단위로 변환
 
