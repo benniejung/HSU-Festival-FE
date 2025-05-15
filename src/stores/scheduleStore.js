@@ -106,7 +106,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 8,
         time: "19:30",
-        endTime: "23:00",
+        endTime: "22:00",
         title: "아티스트 공연",
         content: "✨ 로시(Rothy) / 우원재 / 이하이 ✨",
         status: "대기중",
@@ -176,7 +176,7 @@ export const useScheduleStore = create((set) => ({
       {
         id: 13,
         time: "19:30",
-        endTime: "23:00",
+        endTime: "22:50",
         title: "아티스트 공연",
         content:
           "✨ UNIS(유니스) / 넬(NELL) / 체리필터(cherryfilter) / VIVIZ(비비지) ✨",
