@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useScheduleStore = create((set) => ({
-  selectedDate: "5.15",
+  selectedDate: "5.16",
   schedules: [],
   loading: false,
   error: null,
