@@ -23,6 +23,7 @@ export default function Home() {
         <S.FestivalMainBannerImage
           src={FESTIVALMAINBANNER}
           alt="festivalMainBanner"
+          fetchPriority="high"
         />
         <S.FestivalMainBannerSparkles
           src={FESTIVALMAINBANNERSPARKLES}
