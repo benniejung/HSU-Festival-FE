@@ -5,7 +5,7 @@ import TimeTable from "../../components/home/TimeTable";
 import InfoCard from "../../components/home/InfoCard";
 
 // images
-import FESTIVALMAINBANNER from "../../assets/home/main-banner.png";
+import FESTIVALMAINBANNER from "../../assets/home/main-banner.webp";
 import FESTIVALMAINBANNERSPARKLES from "../../assets/home/sparkles.png";
 import NOTIFYINFO from "../../assets/home/notify-info.png";
 import SITEINFO from "../../assets/home/site-info.png";
